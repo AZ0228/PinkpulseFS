@@ -1,0 +1,15 @@
+# Ignore virtual environment
+venv/
+
+# Ignore pycache and migrations
+__pycache__/
+**/migrations/
+
+# Ignore db files
+*.db
+
+# Ignore IDE files
+.vscode/
+*.pyc
+
+# Ignore config file

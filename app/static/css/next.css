@@ -1,0 +1,292 @@
+:root{
+    --bg:#F8F6EA;
+    --pink:#CD9BC2;
+    --purple: #7B5573;
+    --h1: 5em;
+    --h2: 3.2em;
+    --h3: 2em;
+    --p:2em;
+    --psmall:1.8em;
+    --bradius:25px;
+    --bradius1:50px;
+}
+
+@font-face {
+    font-family: 'Satoshi';
+    src: url('../fonts/Satoshi-Black.otf') format('truetype');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Pally';
+    src: url('../fonts/Pally-Bold.otf') format('truetype');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Pally';
+    src: url('../fonts/Pally-Regular.otf') format('truetype');
+    font-weight: normal;
+}
+
+h1{
+    font-size:var(--h1);
+    margin-bottom: 20px;
+}
+
+h2{
+    margin:0;
+    font-size: var(--h2);
+    margin-top: 30px;
+}
+
+h3{
+    margin:0;
+}
+
+a{
+    text-decoration: none;
+    color:var(--purple);
+}
+
+.satoshi{
+    font-family:'Satoshi'
+}
+
+body{
+    background-color: var(--bg);
+    background-image: url('../images/Grain-Texture1.png');
+    background-size: 150%;
+    font-family: 'Pally';
+    font-weight: bold;
+    color:var(--purple);
+    margin:0;
+    overflow-x: hidden;
+    padding:0;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}   
+
+.main{
+    background-color: var(--pink);
+    margin: 3px 3vw 8vh 4vw;
+    max-width: 1200px;
+    max-height: 700px;
+    width: 90%;
+    height: 65%;
+    border-radius: 50px;
+    display:flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.mainSecond{
+    flex-direction:row;
+    justify-content: flex-end;
+    background-color: var(--purple);
+}
+
+.container{
+    display:flex;
+    justify-content: space-between;
+    width: 80%;
+    gap: 30px;
+    max-width: 800px;
+}
+
+.container button{
+    background-color: var(--purple);
+    color: var(--pink);
+    font-family:'Satoshi';
+    border:none;
+    outline:none;
+    padding: 15px 35px;
+    border-radius: var(--bradius);
+    font-size:var(--psmall);
+    transition: all 0.5s;
+    border: 5px solid var(--purple)
+}
+
+.container button:hover{
+    background-color: var(--pink);
+    color:var(--purple)
+}
+
+.main p{
+    font-family: 'Satoshi';
+    width: 85%;
+    font-size:var(--p);
+}
+
+.content{
+    opacity:0;
+    transition: all 0.5s;
+}
+
+.disappear{
+    opacity:1;
+    transition:all 0.2s;
+}
+
+#heading{
+    display:flex;
+}
+
+#pink{
+    color:var(--pink)
+}
+
+.going{
+    opacity:0;
+
+}
+
+.gone{
+    display:none;
+}
+
+.statistic{
+    display:none;
+    align-self:flex-end;
+    height: 100%;
+    width: 100%;
+    background-color: var(--pink);
+    border-radius: var(--bradius1);
+    transition: all 0.7s;
+    box-sizing: border-box;
+    padding:30px;
+}
+
+.start{
+    width:50%;
+}
+
+#back{
+    display:flex;
+    gap: 20px;
+    font-size: var(--h3);
+    font-family: 'Satoshi';
+}
+
+#back h2{
+    margin:0;
+}
+
+
+
+.content p{
+    margin-top:10px;
+}
+
+#text{
+    margin-left:20px;
+}
+
+.choose{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+}
+
+#plot{
+    width:25%;
+}
+
+
+@media(max-width:850px){
+    :root{
+        --h1:4em;
+        --h2:2.5em;
+        --h3:1.7em;
+        --p: 1.6em;
+        --psmall: 1.5em;
+    }
+    .container button{
+        border-radius:12.5px;
+        padding: 10px 20px;
+    }
+    .start{
+        width:100%;
+        height:60%;
+    }
+}
+
+@media (max-width:500px){
+    :root{
+        --h1: 3em;
+        --p: 1.4em;
+        --psmall: 1.3em;
+    }
+    .container{
+        gap:10px;
+    }
+}
+
+@media (max-width:350px){
+    :root{
+        --h1: 3em;
+        --p: 1.4em;
+        --psmall: 1em;
+    }
+    .container{
+        gap:10px;
+    }
+    .container button{
+        padding: 5px 10px;
+    }
+}
+
+@media (max-width:320px){
+    :root{
+        --h1: 2.4em;
+        --p: 1.2em;
+    }
+    .container{
+        gap:5px;
+    }
+
+}
+
+.dropdown{
+    border: none;
+    font-size: 2em;
+    font-family: 'Satoshi';
+    border-radius: 15px;
+    padding: 10px 20px;
+    background-color: var(--purple);
+    color: var(--pink);
+}
+
+.submit{
+    font-size: 2em;
+    font-family: 'Satoshi';
+    border-radius: 15px;
+    padding: 5px 15px;
+    background-color: var(--purple);
+    color: var(--pink);
+    border: 5px solid var(--purple);
+    margin-left: 15px;
+    transition: all 0.5s;
+}
+
+.submit:hover{
+    background-color: var(--pink);
+    color: var(--purple);
+}
+
+.submit:active{
+    scale:0.95;
+}
+
+.statistics{
+    height:100vh;
+    width:100vw;
+    padding:30px;
+    box-sizing: border-box;
+}

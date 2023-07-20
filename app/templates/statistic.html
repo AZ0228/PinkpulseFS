@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/next.css') }}">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    {% include 'choose.html' %}
+    <section class="statistics">
+    <div id="plot"></div>
+    </section> 
+    <script>
+        var x_values = {{ data['x_values'] | tojson }};
+        var y_values = {{ data['y_values'] | tojson }};
+
+        var trace = {
+            x: x_values,
+            y: y_values,
+            mode: 'markers',
+            type: 'scatter'
+        };
+
+        var layout = {
+            title: 'Scatter Plot',
+            xaxis: {
+                title: 'X'
+            },
+            yaxis: {
+                title: 'Y'
+            }
+        };
+
+        var plotData = [trace];
+        Plotly.newPlot('plot', plotData, layout);
+    </script>
+</body>
+</html>

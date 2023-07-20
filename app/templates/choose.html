@@ -1,0 +1,28 @@
+
+<section class="choose">
+    <a href="{{ url_for('index') }}" id="heading"><h1 id="pink">pink</h1><h1>pulse</h1></a>
+        <section class="main">
+            <p class="disappear">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
+                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            </p>
+            <div class="container disappear">
+                <button id="county">county classifier</button>
+                <button id="statistics" onclick="statistic()">statistic finder</button>
+            </div>
+            <section class="statistic">
+                <div class="content">
+                    <a href="" id="back"><img src="{{ url_for('static', filename='images/backarrow.svg') }}" alt=""><h3>back</h3></a>
+                    <div id="text">
+                        <h2 class="satoshi">welcome!</h2>
+                        <p>pick a county below to get started!</p>
+                        {{ statisticfinder.county(class='dropdown') }}
+                        {{ statisticfinder.submit(class='submit') }}
+                        <a href="{{ url_for('statisticfinder') }}">sdf</a>
+                    </div>
+                </div>
+            </section>
+        </section>
+        <script src="{{ url_for('static',filename='js/second.js') }}"></script>
+</section>
