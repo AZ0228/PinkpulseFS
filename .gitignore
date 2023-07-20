@@ -4,6 +4,7 @@ venv/
 # Ignore pycache and migrations
 __pycache__/
 **/migrations/
+PeriodFinder/
 
 # Ignore db files
 *.db
