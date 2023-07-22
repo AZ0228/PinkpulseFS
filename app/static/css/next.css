@@ -290,3 +290,7 @@ body{
     padding:30px;
     box-sizing: border-box;
 }
+
+.total-amount-container{
+    width:30%;
+}
