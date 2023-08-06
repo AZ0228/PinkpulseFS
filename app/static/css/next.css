@@ -184,6 +184,9 @@ body{
 
 #text{
     margin-left:20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .choose{
@@ -261,18 +264,24 @@ body{
     padding: 10px 20px;
     background-color: var(--purple);
     color: var(--pink);
+    width: 90%;
 }
 
 .submit{
-    font-size: 2em;
+    font-size: 1.5em;
     font-family: 'Satoshi';
     border-radius: 15px;
-    padding: 5px 15px;
+    padding: 10px 5px;
     background-color: var(--purple);
     color: var(--pink);
     border: 5px solid var(--purple);
-    margin-left: 15px;
+    margin-top: 15px;
     transition: all 0.5s;
+    width: 50%;
+    /* height: 50px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .submit:hover{

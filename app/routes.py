@@ -2,7 +2,14 @@ from flask import render_template, flash, redirect, url_for, request
 from app import app
 from app.forms import StatisticFinder
 from datetime import datetime
-from app.mihika import getchoices, getscatter
+from app.mihika import getscatter
+from periodfinder.forms import County, county_fips
+
+def getchoices():
+    ret = [i for i in county_fips] # list of county names
+    ret.sort()
+    ret.insert(0,(''))
+    return ret
 
 @app.route('/')
 @app.route('/index')
@@ -20,6 +27,7 @@ var trace1 = {
 };
 
 '''
+
 @app.route('/second')
 def second():
     choices = getchoices()
@@ -32,7 +40,7 @@ def second():
 @app.route('/statisticfinder')
 def statisticfinder():
     choices = getchoices()
-    statistic = StatisticFinder()
+    statistic = StatisticFinder() # form
     statistic.county.choices=choices
     data = getscatter()
     x_values = data['x_values']
