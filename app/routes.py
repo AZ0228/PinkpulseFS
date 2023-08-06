@@ -47,3 +47,19 @@ def statisticfinder():
     y_values = data['y_values']
 
     return render_template('statistic.html',statisticfinder = statistic, data = data)
+
+@app.route('/getdata', methods=['POST'])
+def getdata():
+    try:
+        # Get the data from the JSON request body
+        data = request.get_json()
+
+        # Process the input (You can perform any backend logic here)
+        user_input = data['input']
+        result = {'output': f'Processed input: {user_input}'}
+
+        return jsonify(result)
+
+    except Exception as e:
+        # Handle any errors that might occur during processing
+        return jsonify({'error': str(e)}), 500
