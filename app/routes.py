@@ -51,11 +51,11 @@ def statisticfinder():
 @app.route('/getdata', methods=['POST'])
 def getdata():
     try:
-        # Get the data from the JSON request body
+        # get the data from the JSON request body
         data = request.get_json()
 
-        # Process the input (You can perform any backend logic here)
-        user_input = data['input']
+        county_name = data['input']
+        county = County(county_name)
         result = {'output': f'Processed input: {user_input}'}
 
         return jsonify(result)

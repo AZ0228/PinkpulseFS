@@ -28,7 +28,7 @@
             const data = {
                 labels: labels,
                 datasets: [{
-                    data: [65000, 59000, 80000],
+                    data: [65, 59, 80],
                     backgroundColor: [
                         '#7B5573',
                         '#CD9BC2',
@@ -45,7 +45,14 @@
                     maintainAspectRatio: false,
                     scales: {
                         y: {
-                            beginAtZero: true
+                            beginAtZero: true,
+                            ticks:{
+                                font:{
+                                    size:15,
+                                    family:'Satoshi1',
+
+                                }
+                            }
                         }
                     },
                     plugins:{

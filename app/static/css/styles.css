@@ -11,6 +11,12 @@
 }
 
 @font-face {
+    font-family: 'Satoshi1';
+    src: url('../fonts/Satoshi-Medium.otf') format('truetype');
+    font-weight: normal;
+}
+
+@font-face {
     font-family: 'Pally';
     src: url('../fonts/Pally-Bold.otf') format('truetype');
     font-weight: bold;
