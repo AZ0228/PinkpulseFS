@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="{{ url_for('static',filename='css/next.css') }}">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 
 <body>
@@ -17,10 +18,13 @@
         </div>
         
     </section>
+    <script src="{{ url_for('static',filename='js/ajax.js') }}"></script>
     <script>
-        var x_values = {{ data['x_values'] | tojson }};
-        var y_values = {{ data['y_values'] | tojson }};
         
+
+        
+
+/*
         document.addEventListener('DOMContentLoaded', function () {
             const totalamount = document.getElementById('total-amount');
 
@@ -28,7 +32,7 @@
             const data = {
                 labels: labels,
                 datasets: [{
-                    data: [65000, 59000, 80000],
+                    data: [65, 59, 80],
                     backgroundColor: [
                         '#7B5573',
                         '#CD9BC2',
@@ -45,7 +49,14 @@
                     maintainAspectRatio: false,
                     scales: {
                         y: {
-                            beginAtZero: true
+                            beginAtZero: true,
+                            ticks:{
+                                font:{
+                                    size:11,
+                                    family:'Satoshi1',
+
+                                }
+                            }
                         }
                     },
                     plugins:{
@@ -55,7 +66,7 @@
                     }
                 },
             });
-        });
+        });*/
     </script>
 </body>
 

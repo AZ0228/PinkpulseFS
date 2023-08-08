@@ -17,8 +17,11 @@
                     <div id="text">
                         <h2 class="satoshi">welcome!</h2>
                         <p>pick a county below to get started!</p>
+                        {{ statisticfinder.csrf_token }}
+
                         {{ statisticfinder.county(class='dropdown') }}
                         {{ statisticfinder.submit(class='submit') }}
+                        <button class="submit" onclick="getData()">submit</button>
                         <a href="{{ url_for('statisticfinder') }}">sdf</a>
                     </div>
                 </div>
