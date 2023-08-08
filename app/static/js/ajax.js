@@ -85,6 +85,13 @@ function toggleLoading(){
     }
 }
 
+function toggleRuntime(runtime){
+    let runtimeText = qs('.runtime-text');
+    let runtimeElement = qs('.runtime');
+    runtimeText.innerHTML = `API call took ${runtime.toFixed(2)} seconds.`;
+    runtimeElement.classList.toggle('active');
+}
+
 // -------------------AJAX---------------------
 
 function getData(){
@@ -112,6 +119,9 @@ function getData(){
         console.log(`API call took ${duration.toFixed(2)} seconds.`);
         console.log(data);
         renderTotalAmount(data);
+        setTimeout(() => {
+            toggleRuntime(duration);
+        }, 500);
     })
 }
 
