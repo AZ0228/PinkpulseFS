@@ -201,6 +201,7 @@ body{
     flex-direction: column;
     align-items: center;
     width: 100vw;
+    filter: blur(2px);
 }
 
 #plot{
