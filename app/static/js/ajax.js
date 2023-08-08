@@ -21,7 +21,7 @@ function getData(){
         const data1 = {
             labels: labels,
             datasets: [{
-                data: [data.county_average, data.state_average, data.national_average],
+                data: [data["County Average"], data["State Average"], data["National Average"]],
                 backgroundColor: [
                     '#7B5573',
                     '#CD9BC2',

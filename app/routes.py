@@ -66,15 +66,6 @@ def getdata():
         county_name = data['input']
         county = County(county_name)
         amount_per_year = county.amount_per_year()
-        print(amount_per_year)
-
-        amount_per_year  = {row[0]: row[1] for row in amount_per_year }
-        amount1 = {}
-        for row in amount_per_year:
-            for column in row:
-                print(column)
-        print(amount_per_year)
-
         #amount_per_year = formatamount(amount_per_year)
 
         return jsonify(amount_per_year)
