@@ -4,11 +4,18 @@ from app.forms import StatisticFinder
 from datetime import datetime
 from app.mihika import getscatter
 from periodfinder.forms import County, county_fips
+import pandas as pd
 
 def getchoices():
     ret = [i for i in county_fips] # list of county names
     ret.sort()
     ret.insert(0,(''))
+    return ret
+
+def formatamount(amounts):
+    ret = []
+    for i in amounts:
+        ret.append(amounts[i])
     return ret
 
 @app.route('/')
@@ -39,6 +46,7 @@ def second():
 
 @app.route('/statisticfinder')
 def statisticfinder():
+    print('stats')
     choices = getchoices()
     statistic = StatisticFinder() # form
     statistic.county.choices=choices
@@ -48,18 +56,30 @@ def statisticfinder():
 
     return render_template('statistic.html',statisticfinder = statistic, data = data)
 
-@app.route('/getdata', methods=['POST'])
+@app.route('/getdata', methods=['POST','GET'])
 def getdata():
+    print(123123)
     try:
         # get the data from the JSON request body
         data = request.get_json()
-
+        print(data)
         county_name = data['input']
         county = County(county_name)
-        result = {'output': f'Processed input: {user_input}'}
+        amount_per_year = county.amount_per_year()
+        print(amount_per_year)
 
-        return jsonify(result)
+        amount_per_year  = {row[0]: row[1] for row in amount_per_year }
+        amount1 = {}
+        for row in amount_per_year:
+            for column in row:
+                print(column)
+        print(amount_per_year)
+
+        #amount_per_year = formatamount(amount_per_year)
+
+        return jsonify(amount_per_year)
 
     except Exception as e:
+        print(2)
         # Handle any errors that might occur during processing
         return jsonify({'error': str(e)}), 500
