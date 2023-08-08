@@ -12,11 +12,10 @@ def getchoices():
     ret.insert(0,(''))
     return ret
 
-def formatamount(amounts):
-    ret = []
-    for i in amounts:
-        ret.append(amounts[i])
-    return ret
+def formatamount(amount):
+    for entry in amount:
+        amount[entry] /= 1000000
+    return amount
 
 @app.route('/')
 @app.route('/index')
@@ -58,16 +57,16 @@ def statisticfinder():
 
 @app.route('/getdata', methods=['POST','GET'])
 def getdata():
-    print(123123)
+    print('Getting data ...')
     try:
         # get the data from the JSON request body
-        data = request.get_json()
-        print(data)
-        county_name = data['input']
+        county_name = request.get_json()
+        county_name = county_name['input']
         county = County(county_name)
         amount_per_year = county.amount_per_year()
-        #amount_per_year = formatamount(amount_per_year)
-
+        amount_per_year = formatamount(amount_per_year)
+        income_dist = county.income_distribution_women()
+        print(income_dist)
         return jsonify(amount_per_year)
 
     except Exception as e:
