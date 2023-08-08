@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>PinkPulse</title>
     <link rel="stylesheet" href="{{ url_for('static',filename='css/next.css') }}">
     <link rel="stylesheet" href="{{ url_for('static',filename='css/loader.css') }}">
 
@@ -13,6 +13,12 @@
 </head>
 
 <body>
+    <div class="runtime">
+        <p class="runtime-text">
+            API call took 11.5s
+        </p>
+        <button onclick="toggleRuntime(0)"><p>x</p></button>
+    </div>
     <div class="loader">
         <div class="three-body">
             <div class="three-body__dot"></div>

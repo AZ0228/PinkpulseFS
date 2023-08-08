@@ -35,6 +35,8 @@
     font-weight: normal;
 }
 
+
+
 h1{
     font-size:var(--h1);
     margin-bottom: 20px;
@@ -313,4 +315,54 @@ body{
 .total-amount-container{
     width:30%;
     height: 40%;
+}
+
+.runtime{
+    position:fixed;
+    top: 20px;
+    right: 20px;
+    background-color: var(--bg);
+    border-radius: 15px;
+    border: 3px solid var(--pink);
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    transition: all 0.5s;
+    transform:translateY(-100px);
+}
+
+.runtime p{
+    margin:0;
+}
+
+.active{
+    transform:translateY(0px);
+}
+
+.runtime button{
+    font-family:'Satoshi';
+    border:none;
+    outline:none;
+    border-radius: 50%;
+    background-color: var(--pink);
+    color: var(--purple);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10px;
+    transition:all 0.3s;
+}
+
+.runtime button:hover{
+    background-color:var(--purple);
+    color:var(--pink);
+    transform:scale(1.1);
+}
+
+.runtime button:active{
+    transform:scale(0.9);
+}
+
+.runtime button p{
+    transform:translateY(-1px);
 }
