@@ -201,6 +201,9 @@ body{
     flex-direction: column;
     align-items: center;
     width: 100vw;
+}
+
+.blur{
     filter: blur(2px);
 }
 
