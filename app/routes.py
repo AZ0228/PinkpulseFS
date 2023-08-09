@@ -21,27 +21,13 @@ def formatamount(amount):
 @app.route('/index')
 def index():
     return render_template('index.html')
-'''
-var trace1 = {
-  x: [1, 2, 3, 4, 5],
-  y: [1, 6, 3, 6, 1],
-  mode: 'markers',
-  type: 'scatter',
-  name: 'Team A',
-  text: ['A-1', 'A-2', 'A-3', 'A-4', 'A-5'],
-  marker: { size: 12 }
-};
-
-'''
 
 @app.route('/second')
 def second():
     choices = getchoices()
     statistic = StatisticFinder()
     statistic.county.choices=choices
-    if statistic.validate_on_submit():
-        data = getscatter()
-    return render_template('second.html', statisticfinder = statistic)
+    return render_template('statistic.html', statisticfinder = statistic)
 
 @app.route('/statisticfinder')
 def statisticfinder():
@@ -65,11 +51,10 @@ def getdata():
         county = County(county_name)
         amount_per_year = county.amount_per_year()
         amount_per_year = formatamount(amount_per_year)
-        income_dist = county.income_distribution_women()
-        racial_dist = county.racial_statistics_women_county()
+        # income_dist = county.income_distribution_women()
+        # racial_dist = county.racial_statistics_women_county()
         
         return jsonify(amount_per_year)
-
     except Exception as e:
         print(2)
         # Handle any errors that might occur during processing
