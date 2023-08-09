@@ -50,23 +50,41 @@ function renderTotalAmount(totalAmounts){
 // -------------------LOADER-------------------
 
 function scrollToTop() {
-    window.scrollTo(0, 0);
+    console.log('scrolling to top');
+    window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+    });
+}
+
+function scrollToBottom() {
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        left: 0,
+        behavior: "smooth"
+    });
 }
 
 function disableScroll() {
     // Save the current scroll position
     const scrollTop = window.scrollY;
-  
     // Disable scrolling by setting overflow hidden to the body
     document.body.style.overflow = 'hidden';
-  
     // Maintain the current scroll position
     window.scrollTo(0, scrollTop);
 }
 
 function enableScroll() {
     // Enable scrolling by setting overflow auto to the body
-    document.body.style.overflow = 'auto';
+    document.body.style.overflow = 'scroll';
+}
+
+function handleScroll() {
+    if (window.scrollY === 0) {
+        disableScroll();
+        window.removeEventListener("scroll", handleScroll);
+    }
 }
 
 function toggleLoading(){
@@ -80,7 +98,8 @@ function toggleLoading(){
         qs('.loader').classList.add('active');
         qs('.choose').classList.add('blur');
         scrollToTop();
-        disableScroll();
+        window.addEventListener("scroll", handleScroll);
+
 
     }
 }

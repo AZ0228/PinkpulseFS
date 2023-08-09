@@ -69,7 +69,8 @@ body{
     font-weight: bold;
     color:var(--purple);
     margin:0;
-    overflow-x: hidden;
+    overflow-x:hidden;
+    overflow: hidden;
     padding:0;
     display: flex;
     justify-content: center;
