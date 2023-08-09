@@ -67,12 +67,8 @@ function scrollToBottom() {
 }
 
 function disableScroll() {
-    // Save the current scroll position
-    const scrollTop = window.scrollY;
     // Disable scrolling by setting overflow hidden to the body
     document.body.style.overflow = 'hidden';
-    // Maintain the current scroll position
-    window.scrollTo(0, scrollTop);
 }
 
 function enableScroll() {
@@ -80,7 +76,7 @@ function enableScroll() {
     document.body.style.overflow = 'scroll';
 }
 
-function handleScroll() {
+function handleScroll(num) {
     if (window.scrollY === 0) {
         disableScroll();
         window.removeEventListener("scroll", handleScroll);
@@ -99,8 +95,6 @@ function toggleLoading(){
         qs('.choose').classList.add('blur');
         scrollToTop();
         window.addEventListener("scroll", handleScroll);
-
-
     }
 }
 
@@ -131,13 +125,18 @@ function getData(){
     }) 
     .then(response => response.json())
     .then(data => {
+        scrollToBottom();
         toggleLoading();
         let endTime = performance.now();
         let duration = endTime - startTime;
         duration = duration/1000;
         console.log(`API call took ${duration.toFixed(2)} seconds.`);
         console.log(data);
-        renderTotalAmount(data);
+        window.addEventListener("scroll", handleScroll);
+
+        setTimeout(() => {
+            renderTotalAmount(data);
+        }, 200);
         setTimeout(() => {
             toggleRuntime(duration);
         }, 500);
