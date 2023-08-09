@@ -67,7 +67,7 @@ def getdata():
         amount_per_year = formatamount(amount_per_year)
         income_dist = county.income_distribution_women()
         racial_dist = county.racial_statistics_women_county()
-        print(income_dist)
+        
         return jsonify(amount_per_year)
 
     except Exception as e:
