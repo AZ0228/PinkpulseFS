@@ -68,12 +68,12 @@ function scrollToBottom() {
 
 function disableScroll() {
     // Disable scrolling by setting overflow hidden to the body
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflowY = 'hidden';
 }
 
 function enableScroll() {
     // Enable scrolling by setting overflow auto to the body
-    document.body.style.overflow = 'scroll';
+    document.body.style.overflowY = 'scroll';
 }
 
 function handleScroll(num) {
