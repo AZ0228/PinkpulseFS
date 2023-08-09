@@ -79,7 +79,6 @@ function enableScroll() {
 function handleScroll(num) {
     if (window.scrollY === 0) {
         disableScroll();
-        window.removeEventListener("scroll", handleScroll);
     }
 }
 
@@ -95,6 +94,9 @@ function toggleLoading(){
         qs('.choose').classList.add('blur');
         scrollToTop();
         window.addEventListener("scroll", handleScroll);
+        setTimeout(() => {
+            window.removeEventListener("scroll", handleScroll);
+        }, 1000);
     }
 }
 
@@ -132,7 +134,6 @@ function getData(){
         duration = duration/1000;
         console.log(`API call took ${duration.toFixed(2)} seconds.`);
         console.log(data);
-        window.addEventListener("scroll", handleScroll);
 
         setTimeout(() => {
             renderTotalAmount(data);
