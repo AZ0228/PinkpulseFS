@@ -3,7 +3,7 @@ from app import app
 from app.forms import StatisticFinder
 from datetime import datetime
 from app.mihika import getscatter
-from periodfinder.forms import County, county_fips
+from app.mihikaforms import County, county_fips
 import pandas as pd
 
 def getchoices():
