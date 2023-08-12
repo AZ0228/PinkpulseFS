@@ -1,4 +1,4 @@
-from periodfinder.forms import County
+from app.mihikaforms import County
 import numpy as np
 
 
