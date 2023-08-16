@@ -86,7 +86,7 @@ function renderIncomeDistribution(incomeDistribution){
       });
 }
 
-function renderRacialDistribution(renderRacialDistribution){
+function renderRacialDistribution(racialDistribution){
     const income = id('racial-dist');
     console.log('income distribution');
     console.log(incomeDistribution);
