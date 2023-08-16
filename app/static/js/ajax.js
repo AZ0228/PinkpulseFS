@@ -41,7 +41,11 @@ function renderTotalAmount(totalAmounts){
             plugins:{
                 legend:{
                     display:false
-                }
+                },
+                title: {
+                    display: true,
+                    text: 'Amount Spent in Millions'
+                  }
             }
         },
     });
