@@ -82,6 +82,42 @@ function renderIncomeDistribution(incomeDistribution){
       });
 }
 
+function renderRacialDistribution(renderRacialDistribution){
+    const income = id('racial-dist');
+    console.log('income distribution');
+    console.log(incomeDistribution);
+    const data = {
+        labels: ['Low', 'Middle-High'],
+        datasets: [{
+            data: incomeDistribution['income-dist'],
+            backgroundColor:[
+                '#7B5573',
+                '#CD9BC2',
+            ],
+        }]
+    };
+
+    if(incomeDist){incomeDist.destroy();}
+
+    incomeDist = new Chart(income, {
+        type: 'pie',
+        data: data,
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            title: {
+              display: true,
+              text: 'Income Distribution'
+            }
+          }
+        },
+      });
+
+}
+
 
 // -------------------LOADER-------------------
 
@@ -197,3 +233,11 @@ function qsa(selector){
 function id(id){
     return document.getElementById(id);
 }
+
+window.addEventListener('load', () => {
+    enableScroll();
+    setTimeout(() => {
+        window.scrollTo(0, 0);  
+    }, 100);
+    disableScroll();
+});

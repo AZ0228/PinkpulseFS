@@ -311,12 +311,21 @@ body{
     width:100vw;
     padding:30px;
     box-sizing: border-box;
+    display:flex;
 }
 
-.total-amount-container,
-.income-dist-container{
+.total-amount-container{
     width:30%;
     height: 40%;
+}
+.income-dist-container{
+    width:30%;
+    height: 50% ;
+}
+.racial-dist-container{
+    width:30%;
+    height: 50% ;
+
 }
 
 .runtime{
