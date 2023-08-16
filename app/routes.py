@@ -50,12 +50,21 @@ def getdata():
         county_name = county_name['input']
         county = County(county_name)
         amount_per_year = county.amount_per_year()
-        amount_per_year = formatamount(amount_per_year)
-        # income_dist = county.income_distribution_women()
-        # racial_dist = county.racial_statistics_women_county()
+        amount_per_year = formatamount(amount_per_year) #8 seconds
+        income_dist = county.income_distribution_women() # 5 seconds -> 0 seconds
+        racial_dist = county.racial_statistics_women_county() #8-10 seconds
         
         return jsonify(amount_per_year)
     except Exception as e:
         print(2)
         # Handle any errors that might occur during processing
         return jsonify({'error': str(e)}), 500
+
+
+
+
+# least popular counties
+
+'''
+imperial county
+'''
