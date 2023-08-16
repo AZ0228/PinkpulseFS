@@ -8,7 +8,6 @@ warnings.simplefilter ('ignore', FutureWarning)
 import pandas as pd
 from census import Census
 from us import states
-#from ignore1.Object import Key
 
 our_census_1 = Census("79afea12a3a55715e84ca7862689e5d86709f14e")
 
@@ -105,66 +104,80 @@ def state_finder_acs1 (variable):
                 x = np.append(x, 0)
         national_average = np.average(x)
         return float(national_average)
-        
     
-
 class County:
     national_dictionary = {}
+    racialStatisticsCounty = {}
+    racialStatisticsNational = {}
+    nationalRacialProportion = None
+    minorityNames = ["BLACK", "INDIGENOUS", "ASIAN", "HAWAIIAN", "OTHER", "HISPANIC"]
+    nationalDollarsSpent = (0.5 * (national_finder_acs1dp ("DP05_0003E")-national_finder_acs1dp ("DP05_0027E")) + 
+                            national_finder_acs1dp ("DP05_0027E") - national_finder_acs1dp ("DP05_0031E")) * 12 * 20
+    stateDollarsSpent = (0.5 * (state_finder_acs1dp("DP05_0003E")-state_finder_acs1dp("DP05_0027E")) + 
+                            state_finder_acs1dp("DP05_0027E") - state_finder_acs1dp("DP05_0031E")) * 12 * 20  
+    
 
     def __init__ (self, name):
         self.name = name #Name of form Alameda county
         self.code = county_fips [self.name]
         #county_codes #Keeps track of all county objects been created
         self.feature_dictionary = {}
+        if (len(County.racialStatisticsNational) == 0):
+            County.racial_statistics_women_national(); 
     
     def find_statistic_acs1dp (self, attribute):
-        our_census_1 = Census ("79afea12a3a55715e84ca7862689e5d86709f14e")
-        x = our_census_1.acs1dp.get((attribute), geo={'for': 'county: {}'.format(self.code),
-                       'in': 'state:{}'.format(states.CA.fips)})
-        self.feature_dictionary[attribute] = x[0][attribute] #ADDS TO SELF DICT
-        if not x[0][attribute]: 
-            return 0
+        if attribute in self.feature_dictionary.keys(): 
+            return self.feature_dictionary[attribute]
         else: 
-            return float(x[0][attribute])
+            our_census_1 = Census ("79afea12a3a55715e84ca7862689e5d86709f14e")
+            x = our_census_1.acs1dp.get((attribute), geo={'for': 'county: {}'.format(self.code),
+                       'in': 'state:{}'.format(states.CA.fips)})
+            self.feature_dictionary[attribute] = x[0][attribute] #ADDS TO SELF DICT
+            if not x[0][attribute]: 
+                return 0
+            else: 
+                return float(x[0][attribute])
     
     def find_statistic_acs1 (self, attribute):
-        our_census_1 = Census ("79afea12a3a55715e84ca7862689e5d86709f14e")
-        x = our_census_1.acs1.get((attribute), geo={'for': 'county: {}'.format(self.code),
-                       'in': 'state:{}'.format(states.CA.fips)})
-        self.feature_dictionary[attribute] = x[0][attribute] #ADDS TO SELF DICT
-        #TRACKS TOTAL CALLS
-        if not x[0][attribute]: 
-            return 0
+        if attribute in self.feature_dictionary.keys(): 
+            return self.feature_dictionary[attribute]
         else: 
-            return float(x[0][attribute])
+            our_census_1 = Census ("79afea12a3a55715e84ca7862689e5d86709f14e")
+            x = our_census_1.acs1.get((attribute), geo={'for': 'county: {}'.format(self.code),
+                       'in': 'state:{}'.format(states.CA.fips)})
+            self.feature_dictionary[attribute] = x[0][attribute] #ADDS TO SELF DICT
+        #TRACKS TOTAL CALLS
+            if not x[0][attribute]:
+                return 0
+            else: 
+                return float(x[0][attribute])
     
     def return_dictionary (self):
         return self.feature_dictionary
     
     
-    def amount_per_year (self): 
-        menstruators_under_18 = 0.5 * ((self.find_statistic_acs1dp("DP05_0003E")) - (self.find_statistic_acs1dp("DP05_0027E")))
-        menstruators_over_18 = self.find_statistic_acs1dp("DP05_0027E") - self.find_statistic_acs1dp("DP05_0031E")
-        total_women_in_area = menstruators_under_18 + menstruators_over_18
-        amount_spent = total_women_in_area * 12 * 20
-        self.feature_dictionary['County Amount Spent'] = amount_spent
-        national_average = (0.5 * (national_finder_acs1dp ("DP05_0003E")-national_finder_acs1dp ("DP05_0027E")) + 
-                            national_finder_acs1dp ("DP05_0027E") - national_finder_acs1dp ("DP05_0031E")) * 12 * 20
-        state_average = (0.5 * (state_finder_acs1dp("DP05_0003E")-state_finder_acs1dp("DP05_0027E")) + 
-                            state_finder_acs1dp("DP05_0027E") - state_finder_acs1dp("DP05_0031E")) * 12 * 20   
+    def amount_per_year (self):
+        if 'AMOUNT_PER_YEAR' in self.feature_dictionary.keys():
+            amount_spent = self.feature_dictionary["AMOUNT_PER_YEAR"]
+        else:     
+            menstruators_under_18 = 0.5 * ((self.find_statistic_acs1dp("DP05_0003E")) - (self.find_statistic_acs1dp("DP05_0027E")))
+            menstruators_over_18 = self.find_statistic_acs1dp("DP05_0027E") - self.find_statistic_acs1dp("DP05_0031E")
+            total_women_in_area = menstruators_under_18 + menstruators_over_18
+            amount_spent = total_women_in_area * 12 * 20
+            self.feature_dictionary['AMOUNT_PER_YEAR'] = amount_spent 
         table = {
-            'County Average': amount_spent,
-            'State Average': state_average,
-            'National Average': national_average
+            "County Average": amount_spent,
+            "State Average": County.stateDollarsSpent,
+            "National Average": County.nationalDollarsSpent
         }
-        return table #{"County Average": amount_spent, "State Average" : state_average, "National Average":national_average}
+        return table
     
     def income_distribution_women (self):
         low_income = self.find_statistic_acs1("B17001_017E")
         total_women = self.find_statistic_acs1dp ("DP05_0003E")
         table1 = Table().with_column("Income Level", ["Low Income", "Middle to High Income"]).with_column("Statistic", [low_income,  total_women-low_income])
         if 'County Amount Spent' in self.feature_dictionary.keys():
-            amount = float(self.feature_dictionary['County Amount Spent'])
+            amount = float(self.feature_dictionary['AMOUNT_PER_YEAR'])
             proportion = float(low_income/(total_women))
             m = 'This County spends ${} per year on menstrual products, and approximately ${} comes from low income individuals.'.format(amount, (amount*proportion))
             k = 'Approximately {} percent of this county is low income.'.format(proportion*100)
@@ -174,38 +187,46 @@ class County:
         print (k)
         return table1
     
+    def racial_statistics_women_national():
+        County.racialStatisticsNational["BLACK"] = national_finder_acs1("B17001B_017E")
+        County.racialStatisticsNational["INDIGENOUS"] = national_finder_acs1("B17001C_017E")
+        County.racialStatisticsNational["ASIAN"] = national_finder_acs1("B17001D_017E")
+        County.racialStatisticsNational["HAWAIIAN"] =  national_finder_acs1 ("B17001E_017E")
+        County.racialStatisticsNational["OTHER"] = national_finder_acs1 ("B17001F_017E")
+        County.racialStatisticsNational["HISPANIC"] = national_finder_acs1 ("B17001I_017E")
+        minoritySum = sum(County.racialStatisticsNational.values())
+        print(minoritySum)
+        County.racialStatisticsNational["WHITE"] = national_finder_acs1 ("B17001A_017E")
+        County.nationalRacialProportion = float(minoritySum)/float(minoritySum+County.racialStatisticsNational["WHITE"])
+        return; 
 
-
+                                                       
     def racial_statistics_women_county(self):
         #RAW COUNTY STATISTICS
-        def racial_statistics_women_national():
-            black_women1 = national_finder_acs1("B17001B_017E")
-            indigenous_women1 = national_finder_acs1("B17001C_017E")
-            asian_women1 = national_finder_acs1("B17001D_017E")
-            hawaiian_women1 = national_finder_acs1 ("B17001E_017E")
-            other_women1 = national_finder_acs1 ("B17001F_017E")
-            hispanic_women1 = national_finder_acs1 ("B17001I_017E")
-            white_women1 = national_finder_acs1 ("B17001A_017E")
-            minority_women = [black_women1, indigenous_women1, asian_women1, hawaiian_women1, other_women1, hispanic_women1]
-            all_women = [black_women1, indigenous_women1, asian_women1, hawaiian_women1, other_women1, hispanic_women1, white_women1]
-            return float(sum(minority_women))/float(sum(all_women))
-        black_women = self.find_statistic_acs1("B17001B_017E")
-        indigenous_women = self.find_statistic_acs1("B17001C_017E")
-        asian_women = self.find_statistic_acs1("B17001D_017E")
-        hawaiian_women = self.find_statistic_acs1("B17001E_017E")
-        other_women = self.find_statistic_acs1("B17001F_017E")
-        hispanic_women = self.find_statistic_acs1("B17001I_017E")
-        white_women = self.find_statistic_acs1("B17001A_017E")
-        minority_women = [black_women, indigenous_women, asian_women, hawaiian_women, other_women, hispanic_women]
-        all_women = [black_women, indigenous_women, asian_women, hawaiian_women, other_women, hispanic_women, white_women]
-        county_proportion = float(sum(minority_women))/float(sum(all_women))
-        national_proportion = racial_statistics_women_national()
+        if ("RACIAL STATISTICS" in self.feature_dictionary.keys()):
+            allWomen = sum(self.feature_dictionary["RACIAL STATISTICS"].values())
+            minorityWomen = 0
+            for race in County.minorityNames: 
+                if (race in self.feature_dictionary["RACIAL STATISTICS"].keys()):
+                    minorityWomen += self.feature_dictionary["RACIAL STATISTICS"][race]
+        else: 
+            self.feature_dictionary["RACIAL STATISTICS"] = {}
+            self.feature_dictionary["RACIAL STATISTICS"]["BLACK"] = self.find_statistic_acs1("B17001B_017E")
+            self.feature_dictionary["RACIAL STATISTICS"]["INDIGENOUS"] = self.find_statistic_acs1("B17001C_017E")
+            self.feature_dictionary["RACIAL STATISTICS"]["ASIAN"] = self.find_statistic_acs1("B17001D_017E")
+            self.feature_dictionary["RACIAL STATISTICS"]["HAWAIIAN"] = self.find_statistic_acs1("B17001E_017E")
+            self.feature_dictionary["RACIAL STATISTICS"]["OTHER"] =  self.find_statistic_acs1("B17001F_017E")
+            self.feature_dictionary["RACIAL STATISTICS"]["HISPANIC"] =  self.find_statistic_acs1("B17001I_017E")
+            minorityWomen = sum(self.feature_dictionary["RACIAL STATISTICS"].values())
+            self.feature_dictionary["RACIAL STATISTICS"]["WHITE"] = self.find_statistic_acs1("B17001A_017E")
+            allWomen = sum(self.feature_dictionary["RACIAL STATISTICS"].values())
+        county_proportion = float(minorityWomen/allWomen)
         print('Racial minorities make up {} % of low-income menstruators in this county'.format(100*county_proportion))
-        print ('That is {} times the national average'.format(float(county_proportion/national_proportion)))
-        if float(county_proportion/national_proportion) > 1 :
-            print ('This is also {}'.format(((float(county_proportion/national_proportion))-1)*100), 'percent higher than the national average.')
+        print ('That is {} times the national average'.format(float(county_proportion/County.nationalRacialProportion)))
+        if float(county_proportion/County.nationalRacialProportion) > 1 :
+            print ('This is also {}'.format(((float(county_proportion/County.nationalRacialProportion))-1)*100), 'percent higher than the national average.')
         table1 = Table().with_column("Race", ['Black', 'Indigenous', 'Asian', 'Hawaiian', 'Other', 'Hispanic', 'White']).with_column(
-            "Statistic", all_women)
+            "Statistic", allWomen)
         return table1
 
 

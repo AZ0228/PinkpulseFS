@@ -46,6 +46,25 @@ function renderTotalAmount(totalAmounts){
     });
 }
 
+function renderIncomeDistribution(incomeDistribution){
+    const config = {
+        type: 'pie',
+        data: data,
+        options: {
+          responsive: true,
+          plugins: {
+            legend: {
+              position: 'top',
+            },
+            title: {
+              display: true,
+              text: 'Chart.js Pie Chart'
+            }
+          }
+        },
+      };
+}
+
 
 // -------------------LOADER-------------------
 
@@ -107,6 +126,7 @@ function toggleRuntime(runtime){
     runtimeElement.classList.toggle('active');
 }
 
+
 // -------------------AJAX---------------------
 
 function getData(){
@@ -115,6 +135,10 @@ function getData(){
     console.log(userinput);
     const startTime = performance.now();
     toggleLoading();
+    let runtimeElement = qs('.runtime');
+    if(runtimeElement.classList.contains('active')){
+        toggleRuntime(0);
+    }
     fetch('/getdata', {
         method: 'POST',
         headers: {
