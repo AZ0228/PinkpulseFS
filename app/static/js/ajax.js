@@ -1,6 +1,7 @@
 let loading = false;
 
 let totalAmountinArea;
+let incomeDist;
 
 function renderTotalAmount(totalAmounts){
     const totalamount = id('total-amount');
@@ -47,7 +48,23 @@ function renderTotalAmount(totalAmounts){
 }
 
 function renderIncomeDistribution(incomeDistribution){
-    const config = {
+    const income = id('income-dist');
+    console.log('income distribution');
+    console.log(incomeDistribution);
+    const data = {
+        labels: ['Low', 'Middle-High'],
+        datasets: [{
+            data: incomeDistribution['income-dist'],
+            backgroundColor:[
+                '#7B5573',
+                '#CD9BC2',
+            ],
+        }]
+    };
+
+    if(incomeDist){incomeDist.destroy();}
+
+    incomeDist = new Chart(income, {
         type: 'pie',
         data: data,
         options: {
@@ -58,11 +75,11 @@ function renderIncomeDistribution(incomeDistribution){
             },
             title: {
               display: true,
-              text: 'Chart.js Pie Chart'
+              text: 'Income Distribution'
             }
           }
         },
-      };
+      });
 }
 
 
@@ -160,7 +177,8 @@ function getData(){
         console.log(data);
 
         setTimeout(() => {
-            renderTotalAmount(data);
+            renderTotalAmount(data['amount_per_year']);
+            renderIncomeDistribution(data['income_dist']);
         }, 200);
         setTimeout(() => {
             toggleRuntime(duration);

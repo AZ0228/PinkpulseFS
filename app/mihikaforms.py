@@ -185,7 +185,10 @@ class County:
             m, k = [], []
         print (m)
         print (k)
-        return table1
+        ret = {
+            'income-dist': [low_income,total_women-low_income],
+        }
+        return ret
     
     def racial_statistics_women_national():
         County.racialStatisticsNational["BLACK"] = national_finder_acs1("B17001B_017E")
