@@ -313,7 +313,8 @@ body{
     box-sizing: border-box;
 }
 
-.total-amount-container{
+.total-amount-container,
+.income-dist-container{
     width:30%;
     height: 40%;
 }
