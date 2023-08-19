@@ -41,7 +41,11 @@ function renderTotalAmount(totalAmounts){
             plugins:{
                 legend:{
                     display:false
-                }
+                },
+                title: {
+                    display: true,
+                    text: 'Amount Spent in Millions'
+                  }
             }
         },
     });
@@ -82,7 +86,7 @@ function renderIncomeDistribution(incomeDistribution){
       });
 }
 
-function renderRacialDistribution(renderRacialDistribution){
+function renderRacialDistribution(racialDistribution){
     const income = id('racial-dist');
     console.log('income distribution');
     console.log(incomeDistribution);
