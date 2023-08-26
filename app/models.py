@@ -2,7 +2,7 @@ from app import db
 from datetime import datetime
 
 #initialize a national county instance that can be accessed for national averages
-class County(db.Model):
+class CountyData(db.Model):
     name = db.Column(db.String(64),unique=True, primary_key=True)
     amount = db.Column(db.Integer())
     lowIncome = db.Column(db.Integer())
