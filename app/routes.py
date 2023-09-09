@@ -68,7 +68,7 @@ def getdata():
         # Handle any errors that might occur during processing
         return jsonify({'error': str(e)}), 500
 
-@celery.task
+@Celery.task
 def update_api(name):
     county = CountyData.query.filter_by(name=name).first()
 
