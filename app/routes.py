@@ -5,7 +5,7 @@ from datetime import datetime
 from app.mihika import getscatter
 from app.mihikaforms import County, county_fips
 import pandas as pd
-from celery import Celery
+# from celery import Celery
 from app.models import CountyData
 
 def getchoices():
@@ -53,14 +53,14 @@ def getdata():
         county_name = county_name['input']
 
         county = County(county_name)
-        amount_per_year = county.amount_per_year()
-        amount_per_year = formatamount(amount_per_year) #8 seconds
-        income_dist = county.income_distribution_women() # 5 seconds -> 0 seconds
-        racial_dist = county.racial_statistics_women_county() #8-10 seconds
-        print(racial_dist)
+        # amount_per_year = county.amount_per_year()
+        # amount_per_year = formatamount(amount_per_year) #8 seconds
+        # income_dist = county.income_distribution_women() # 5 seconds -> 0 seconds
+        # racial_dist = county.racial_statistics_women_county() #8-10 seconds
+        # print(racial_dist)
         ret = {
-            'amount_per_year': amount_per_year,
-            'income_dist': income_dist,
+            'amount_per_year': [1,2,3],
+            'income_dist': [10,90],
             'racial_dist': [1,2,3]
         }
         return jsonify(ret)
@@ -72,8 +72,6 @@ def getdata():
 # @Celery.task
 # def update_api(name):
 #     county = CountyData.query.filter_by(name=name).first()
-#     print('celery')
-    
 
 # least popular counties
 

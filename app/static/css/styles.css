@@ -68,8 +68,9 @@ section{
 }
 
 h1{
-    font-size:5em;
+    font-size:4em;
     margin:25px 0;
+    color:var(--purple);
 }
 
 p{

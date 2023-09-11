@@ -12,4 +12,4 @@ class Config(object):
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     ADMINS = ['jbliu02@gmail.com']
-    CELERY_BROKER_URL = 'redis://localhost:6379/0'  
+    # CELERY_BROKER_URL = 'redis://localhost:6379/0'  
