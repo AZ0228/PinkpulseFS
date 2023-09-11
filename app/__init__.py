@@ -7,7 +7,7 @@ from logging.handlers import SMTPHandler, RotatingFileHandler
 import os
 from flask_wtf.csrf import CSRFProtect
 from .config import Config
-from celery import Celery
+# from celery import Celery
 
 app = Flask(__name__)
 app.config.from_object(Config)

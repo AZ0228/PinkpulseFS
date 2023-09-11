@@ -5,7 +5,7 @@ from datetime import datetime
 from app.mihika import getscatter
 from app.mihikaforms import County, county_fips
 import pandas as pd
-from celery import Celery
+# from celery import Celery
 from app.models import CountyData
 
 def getchoices():
@@ -72,8 +72,6 @@ def getdata():
 # @Celery.task
 # def update_api(name):
 #     county = CountyData.query.filter_by(name=name).first()
-#     print('celery')
-    
 
 # least popular counties
 
