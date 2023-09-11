@@ -37,6 +37,7 @@ def statisticfinder():
     choices = getchoices()
     statistic = StatisticFinder() # form
     statistic.county.choices=choices
+    # task = update_api.apply_async()
     data = getscatter()
     x_values = data['x_values']
     y_values = data['y_values']
@@ -53,13 +54,13 @@ def getdata():
 
         county = County(county_name)
         amount_per_year = county.amount_per_year()
-        amount_per_year = formatamount(amount_per_year) #8 seconds
-        income_dist = county.income_distribution_women() # 5 seconds -> 0 seconds
-        racial_dist = county.racial_statistics_women_county() #8-10 seconds
-        print(racial_dist)
+        # amount_per_year = formatamount(amount_per_year) #8 seconds
+        # income_dist = county.income_distribution_women() # 5 seconds -> 0 seconds
+        # racial_dist = county.racial_statistics_women_county() #8-10 seconds
+        # print(racial_dist)
         ret = {
             'amount_per_year': amount_per_year,
-            'income_dist': income_dist,
+            'income_dist': [60,40],
             'racial_dist': [1,2,3]
         }
         return jsonify(ret)
@@ -68,9 +69,11 @@ def getdata():
         # Handle any errors that might occur during processing
         return jsonify({'error': str(e)}), 500
 
-@celery.task
-def update_api(name):
-    county = CountyData.query.filter_by(name=name).first()
+# @Celery.task
+# def update_api(name):
+#     county = CountyData.query.filter_by(name=name).first()
+#     print('celery')
+    
 
 # least popular counties
 
