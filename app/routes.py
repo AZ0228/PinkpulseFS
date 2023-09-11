@@ -60,7 +60,7 @@ def getdata():
         print(racial_dist)
         ret = {
             'amount_per_year': amount_per_year,
-            'income_dist': [60,40],
+            'income_dist': income_dist,
             'racial_dist': [1,2,3]
         }
         return jsonify(ret)
