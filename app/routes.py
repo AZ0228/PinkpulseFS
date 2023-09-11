@@ -59,8 +59,8 @@ def getdata():
         racial_dist = county.racial_statistics_women_county() #8-10 seconds
         print(racial_dist)
         ret = {
-            'amount_per_year': [1,2,3],
-            'income_dist': [10,90],
+            'amount_per_year': amount_per_year,
+            'income_dist': income_dist,
             'racial_dist': [1,2,3]
         }
         return jsonify(ret)
