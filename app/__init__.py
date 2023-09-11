@@ -14,6 +14,6 @@ app.config.from_object(Config)
 db = SQLAlchemy(app)
 migrate = Migrate(app,db)
 csrf = CSRFProtect(app)
-celery = Celery(__name__, broker=Config.CELERY_BROKER_URL)
+# celery = Celery(__name__, broker=Config.CELERY_BROKER_URL)
 
 from app import routes, models
