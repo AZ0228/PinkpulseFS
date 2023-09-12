@@ -2,7 +2,7 @@ let loading = false;
 
 let totalAmountinArea;
 let incomeDist;
-let raciaDist;
+let racialDist;
 
 function renderTotalAmount(totalAmounts){
     const totalamount = id('total-amount');
@@ -105,7 +105,7 @@ function renderRacialDistribution(racialDistribution){
         }]
     };
 
-    if(raciaDist){raciaDist.destroy();}
+    if(racialDist){racialDist.destroy();}
 
     racialDist = new Chart(racial, {
         type: 'pie',
