@@ -218,8 +218,8 @@ class County:
             self.feature_dictionary["RACIAL STATISTICS"]["INDIGENOUS"] = self.find_statistic_acs1("B17001C_017E")
             self.feature_dictionary["RACIAL STATISTICS"]["ASIAN"] = self.find_statistic_acs1("B17001D_017E")
             self.feature_dictionary["RACIAL STATISTICS"]["HAWAIIAN"] = self.find_statistic_acs1("B17001E_017E")
-            self.feature_dictionary["RACIAL STATISTICS"]["OTHER"] =  self.find_statistic_acs1("B17001F_017E")
             self.feature_dictionary["RACIAL STATISTICS"]["HISPANIC"] =  self.find_statistic_acs1("B17001I_017E")
+            self.feature_dictionary["RACIAL STATISTICS"]["OTHER"] =  self.find_statistic_acs1("B17001F_017E")
             minorityWomen = sum(self.feature_dictionary["RACIAL STATISTICS"].values())
             self.feature_dictionary["RACIAL STATISTICS"]["WHITE"] = self.find_statistic_acs1("B17001A_017E")
             allWomen = sum(self.feature_dictionary["RACIAL STATISTICS"].values())
@@ -230,7 +230,7 @@ class County:
             print ('This is also {}'.format(((float(county_proportion/County.nationalRacialProportion))-1)*100), 'percent higher than the national average.')
         table1 = Table().with_column("Race", ['Black', 'Indigenous', 'Asian', 'Hawaiian', 'Other', 'Hispanic', 'White']).with_column(
             "Statistic", allWomen)
-        return table1
+        return list(self.feature_dictionary["RACIAL STATISTICS"].values())
 
 
 
