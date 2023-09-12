@@ -61,7 +61,7 @@ def getdata():
         ret = {
             'amount_per_year': amount_per_year,
             'income_dist': income_dist,
-            'racial_dist': [1,2,3]
+            'racial_dist': racial_dist
         }
         return jsonify(ret)
     except Exception as e:
