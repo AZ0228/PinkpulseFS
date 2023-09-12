@@ -76,11 +76,10 @@ function renderIncomeDistribution(incomeDistribution){
           responsive: true,
           plugins: {
             legend: {
-              position: 'top',
+                display:false
             },
             title: {
-              display: true,
-              text: 'Income Distribution'
+              display: false,
             }
           }
         },
@@ -90,9 +89,9 @@ function renderIncomeDistribution(incomeDistribution){
 function renderRacialDistribution(racialDistribution){
     const racial = id('racial-dist');
     const data = {
-        labels: ['black','indigenous','asian','hawaiian','hispanic','other','white'],
+        labels: racialDistribution[1],
         datasets: [{
-            data: racialDistribution,
+            data: racialDistribution[0],
             backgroundColor:[
                 '#7B5573',
                 '#906E88',
@@ -114,11 +113,10 @@ function renderRacialDistribution(racialDistribution){
           responsive: true,
           plugins: {
             legend: {
-              position: 'top',
+                    display:false            
             },
             title: {
-              display: true,
-              text: 'Income Distribution'
+              display: false,
             }
           }
         },

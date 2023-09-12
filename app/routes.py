@@ -7,6 +7,7 @@ from app.mihikaforms import County, county_fips
 import pandas as pd
 # from celery import Celery
 from app.models import CountyData
+from app.test import Test
 
 def getchoices():
     ret = [i for i in county_fips] # list of county names
@@ -19,6 +20,15 @@ def formatamount(amount):
         amount[entry] /= 1000000
     return amount
 
+def formatracial(racialDistribution):
+    options = ['black','indigenous','asian','hawaiian','hispanic','white','other']
+    for i in range(len(racialDistribution)-1):
+        if racialDistribution[i] == 0:
+            racialDistribution.pop(i)
+            options.pop(i)
+    return racialDistribution, options
+
+
 @app.route('/')
 @app.route('/index')
 def index():
@@ -27,6 +37,7 @@ def index():
 @app.route('/second')
 def second():
     choices = getchoices()
+    choices.insert(0,'test')
     statistic = StatisticFinder()
     statistic.county.choices=choices
     return render_template('statistic.html', statisticfinder = statistic)
@@ -35,6 +46,7 @@ def second():
 def statisticfinder():
     print('stats')
     choices = getchoices()
+    choices.insert(0,'test')
     statistic = StatisticFinder() # form
     statistic.county.choices=choices
     # task = update_api.apply_async()
@@ -51,17 +63,20 @@ def getdata():
         # get the data from the JSON request body
         county_name = request.get_json()
         county_name = county_name['input']
-
-        county = County(county_name)
+        if county_name == 'test':
+            county = Test()
+        else: 
+            county = County(county_name)
         amount_per_year = county.amount_per_year()
         amount_per_year = formatamount(amount_per_year) #8 seconds
         income_dist = county.income_distribution_women() # 5 seconds -> 0 seconds
         racial_dist = county.racial_statistics_women_county() #8-10 seconds
-        print(racial_dist)
+        racial_dist, options = formatracial(racial_dist) # 0 seconds
+        racial = [racial_dist, options]
         ret = {
             'amount_per_year': amount_per_year,
             'income_dist': income_dist,
-            'racial_dist': racial_dist
+            'racial_dist': racial
         }
         return jsonify(ret)
     except Exception as e:
