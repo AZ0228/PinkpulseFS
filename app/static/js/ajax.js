@@ -89,7 +89,7 @@ function renderIncomeDistribution(incomeDistribution){
 function renderRacialDistribution(racialDistribution){
     const racial = id('racial-dist');
     const data = {
-        labels: ['black','indigenous','asian','hawaiian','hispanic','other'],
+        labels: ['black','indigenous','asian','hawaiian','hispanic','other','white'],
         datasets: [{
             data: racialDistribution['racial-dist'],
             backgroundColor:[
