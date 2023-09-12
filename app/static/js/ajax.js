@@ -92,7 +92,7 @@ function renderRacialDistribution(racialDistribution){
     const data = {
         labels: ['black','indigenous','asian','hawaiian','hispanic','other','white'],
         datasets: [{
-            data: racialDistribution['racial-dist'],
+            data: racialDistribution,
             backgroundColor:[
                 '#7B5573',
                 '#CD9BC2',
