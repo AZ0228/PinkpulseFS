@@ -97,7 +97,7 @@ function renderRacialDistribution(racialDistribution){
                 '#7B5573',
                 '#906E88',
                 '#9A7692',
-                '#A7829F',
+                // '#A7829F',
                 '#A4789A',
                 '#B887AD',
                 '#CD9BC2',
