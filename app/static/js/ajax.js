@@ -95,6 +95,10 @@ function renderRacialDistribution(racialDistribution){
             data: racialDistribution,
             backgroundColor:[
                 '#7B5573',
+                '#906E88',
+                '#9A7692',
+                '#A4789A',
+                '#B887AD',
                 '#CD9BC2',
             ],
         }]
