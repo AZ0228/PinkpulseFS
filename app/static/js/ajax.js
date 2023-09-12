@@ -87,13 +87,11 @@ function renderIncomeDistribution(incomeDistribution){
 }
 
 function renderRacialDistribution(racialDistribution){
-    const income = id('racial-dist');
-    console.log('income distribution');
-    console.log(incomeDistribution);
+    const racial = id('racial-dist');
     const data = {
-        labels: ['Low', 'Middle-High'],
+        labels: ['black','indigenous','asian','hawaiian','hispanic','other'],
         datasets: [{
-            data: incomeDistribution['income-dist'],
+            data: racialDistribution['racial-dist'],
             backgroundColor:[
                 '#7B5573',
                 '#CD9BC2',
@@ -101,7 +99,7 @@ function renderRacialDistribution(racialDistribution){
         }]
     };
 
-    if(incomeDist){incomeDist.destroy();}
+    if(racial){racial.destroy();}
 
     incomeDist = new Chart(income, {
         type: 'pie',
@@ -219,6 +217,7 @@ function getData(){
         setTimeout(() => {
             renderTotalAmount(data['amount_per_year']);
             renderIncomeDistribution(data['income_dist']);
+            renderRacialDistribution(data['racial_dist']);
         }, 200);
         setTimeout(() => {
             toggleRuntime(duration);
