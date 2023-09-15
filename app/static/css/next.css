@@ -347,7 +347,7 @@ body{
     .main{
         height:95%;
         max-height: 1100px;
-        margin:0 20px 20px 20px;
+        margin: 0 30px 30px 30px;
     }
     #back{
         position: absolute;
