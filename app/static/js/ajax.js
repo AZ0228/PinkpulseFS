@@ -2,7 +2,7 @@ let loading = false;
 
 let totalAmountinArea;
 let incomeDist;
-let raciaDist;
+let racialDist;
 
 function renderTotalAmount(totalAmounts){
     const totalamount = id('total-amount');
@@ -76,11 +76,10 @@ function renderIncomeDistribution(incomeDistribution){
           responsive: true,
           plugins: {
             legend: {
-              position: 'top',
+                display:false
             },
             title: {
-              display: true,
-              text: 'Income Distribution'
+              display: false,
             }
           }
         },
@@ -90,14 +89,14 @@ function renderIncomeDistribution(incomeDistribution){
 function renderRacialDistribution(racialDistribution){
     const racial = id('racial-dist');
     const data = {
-        labels: ['black','indigenous','asian','hawaiian','hispanic','other','white'],
+        labels: racialDistribution[1],
         datasets: [{
-            data: racialDistribution,
+            data: racialDistribution[0],
             backgroundColor:[
                 '#7B5573',
                 '#906E88',
                 '#9A7692',
-                // '#A7829F',
+                '#A7829F',
                 '#A4789A',
                 '#B887AD',
                 '#CD9BC2',
@@ -105,7 +104,7 @@ function renderRacialDistribution(racialDistribution){
         }]
     };
 
-    if(raciaDist){raciaDist.destroy();}
+    if(racialDist){racialDist.destroy();}
 
     racialDist = new Chart(racial, {
         type: 'pie',
@@ -114,11 +113,10 @@ function renderRacialDistribution(racialDistribution){
           responsive: true,
           plugins: {
             legend: {
-              position: 'top',
+                    display:false            
             },
             title: {
-              display: true,
-              text: 'Income Distribution'
+              display: false,
             }
           }
         },
