@@ -319,11 +319,11 @@ body{
     height: 40%;
 }
 .income-dist-container{
-    width:30%;
+    width:auto;
     height: 40% ;
 }
 .racial-dist-container{
-    width:30%;
+    width:auto;
     height: 40% ;
 
 }

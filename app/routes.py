@@ -21,12 +21,20 @@ def formatamount(amount):
     return amount
 
 def formatracial(racialDistribution):
-    options = ['black','indigenous','asian','hawaiian','hispanic','white','other']
+    options = ['black','indigenous','asian','hawaiian','hispanic','other']
+    white = racialDistribution[5]
+    racialDistribution.pop(5)
     for i in range(len(racialDistribution)-1):
         if racialDistribution[i] == 0:
             racialDistribution.pop(i)
             options.pop(i)
-    return racialDistribution, options
+    combined = dict(zip(racialDistribution,options))
+    sorted_combined = dict(sorted(combined.items(),reverse=True))
+    racialdist = list(sorted_combined.keys())
+    racialoptions = list(sorted_combined.values())
+    racialdist.append(white)
+    racialoptions.append('white')
+    return racialdist, racialoptions
 
 
 @app.route('/')
