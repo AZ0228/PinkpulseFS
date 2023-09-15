@@ -26,7 +26,14 @@ def formatracial(racialDistribution):
         if racialDistribution[i] == 0:
             racialDistribution.pop(i)
             options.pop(i)
-    return racialDistribution, options
+        elif i != len(racialDistribution)-1:
+            if racialDistribution[i] < racialDistribution[i+1]:
+                storage = racialDistribution[i] , options[i]
+                racialDistribution[i] = racialDistribution[i+1]
+                options[i] = options[i+1]
+                racialDistribution[i+1] = storage[0]
+                options[i+1] = storage[1]
+    return racialDistribution, options  
 
 
 @app.route('/')
