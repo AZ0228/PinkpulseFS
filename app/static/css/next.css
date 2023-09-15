@@ -134,6 +134,9 @@ body{
 .content{
     opacity:0;
     transition: all 0.5s;
+    display: flex;
+    flex-direction: column;
+    position: relative;
 }
 
 .disappear{
@@ -215,63 +218,10 @@ body{
 }
 
 
-@media(max-width:850px){
-    :root{
-        --h1:4em;
-        --h2:2.5em;
-        --h3:1.7em;
-        --p: 1.6em;
-        --psmall: 1.5em;
-    }
-    .container button{
-        border-radius:12.5px;
-        padding: 10px 20px;
-    }
-    .start{
-        width:100%;
-        height:60%;
-    }
-}
-
-@media (max-width:500px){
-    :root{
-        --h1: 3em;
-        --p: 1.4em;
-        --psmall: 1.3em;
-    }
-    .container{
-        gap:10px;
-    }
-}
-
-@media (max-width:350px){
-    :root{
-        --h1: 3em;
-        --p: 1.4em;
-        --psmall: 1em;
-    }
-    .container{
-        gap:10px;
-    }
-    .container button{
-        padding: 5px 10px;
-    }
-}
-
-@media (max-width:320px){
-    :root{
-        --h1: 2.4em;
-        --p: 1.2em;
-    }
-    .container{
-        gap:5px;
-    }
-
-}
 
 .dropdown{
     border: none;
-    font-size: 2em;
+    font-size: var(--h3);
     font-family: 'Satoshi';
     border-radius: 15px;
     padding: 10px 20px;
@@ -320,11 +270,11 @@ body{
 }
 .income-dist-container{
     width:auto;
-    height: 40% ;
+    height: 50% ;
 }
 .racial-dist-container{
     width:auto;
-    height: 40% ;
+    height: 50% ;
 
 }
 
@@ -376,4 +326,85 @@ body{
 
 .runtime button p{
     transform:translateY(-1px);
+}
+
+@media(max-width:850px){
+    :root{
+        --h1:4em;
+        --h2:2em;
+        --h3:1.7em;
+        --p: 1.4em;
+        --psmall: 1.5em;
+    }
+    .container button{
+        border-radius:12.5px;
+        padding: 10px 20px;
+    }
+    .start{
+        width:100%;
+        height:60%;
+    }
+    .main{
+        height:95%;
+        max-height: 1100px;
+        margin:0 20px 20px 20px;
+    }
+    #back{
+        position: absolute;
+        scale: 0.8;
+    }
+    .statistics{
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        padding: 0;
+    }
+    #heading{
+        line-height: 0.8;
+    }
+    h1{
+        margin:30px 0;
+    }
+    .dropdown{
+        padding:5px 10px;
+    }
+    .submit{
+        padding:7px 2.5px;
+    }
+}
+
+@media (max-width:500px){
+    :root{
+        --h1: 3em;
+        --p: 1.4em;
+        --psmall: 1.3em;
+    }
+    .container{
+        gap:10px;
+    }
+}
+
+@media (max-width:350px){
+    :root{
+        --h1: 3em;
+        --p: 1.4em;
+        --psmall: 1em;
+    }
+    .container{
+        gap:10px;
+    }
+    .container button{
+        padding: 5px 10px;
+    }
+}
+
+@media (max-width:320px){
+    :root{
+        --h1: 2.4em;
+        --p: 1.2em;
+    }
+    .container{
+        gap:5px;
+    }
+
 }
