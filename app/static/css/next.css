@@ -382,6 +382,9 @@ body{
     .container{
         gap:10px;
     }
+    .main{
+        height:90%;
+    }
 }
 
 @media (max-width:350px){
