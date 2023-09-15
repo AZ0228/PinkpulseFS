@@ -339,6 +339,7 @@ body{
     .container button{
         border-radius:12.5px;
         padding: 10px 20px;
+        font-size: 1em;
     }
     .start{
         width:100%;
@@ -387,12 +388,13 @@ body{
         margin-bottom:100px;
 
     }
+
 }
 
 @media (max-width:350px){
     :root{
         --h1: 3em;
-        --p: 1.4em;
+        --p: 1.2em;
         --psmall: 1em;
     }
     .container{
