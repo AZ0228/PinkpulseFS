@@ -265,7 +265,7 @@ body{
 }
 
 .total-amount-container{
-    width:30%;
+    width:auto;
     height: 40%;
 }
 .income-dist-container{
