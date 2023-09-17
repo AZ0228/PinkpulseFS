@@ -42,6 +42,7 @@ body{
     display: flex;
     justify-content: center;
     flex-direction: row;
+    align-items: center;
 }   
 
 
