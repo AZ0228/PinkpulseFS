@@ -164,7 +164,7 @@ body{
 .statistic{
     display:none;
     align-self:flex-end;
-    height: 100%;
+    min-height: 100%;
     width: 100%;
     background-color: var(--pink);
     border-radius: var(--bradius1);
