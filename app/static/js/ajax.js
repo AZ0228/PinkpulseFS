@@ -4,6 +4,8 @@ let totalAmountinArea;
 let incomeDist;
 let racialDist;
 
+
+// -------------------DATA VIS-------------------
 function renderTotalAmount(totalAmounts){
     const totalamount = id('total-amount');
     const labels = ['county average', 'state average', 'national average'];
@@ -184,6 +186,11 @@ function toggleRuntime(runtime){
     runtimeText.innerHTML = `API call took ${runtime.toFixed(2)} seconds.`;
     runtimeElement.classList.toggle('active');
 }
+
+// -------------------DATA PROCESSING-------------------
+
+
+
 
 
 // -------------------AJAX---------------------
