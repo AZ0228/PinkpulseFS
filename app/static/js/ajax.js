@@ -5,6 +5,17 @@ let incomeDist;
 let racialDist;
 
 
+const colors = [
+    '#7B5573',
+    '#906E88',
+    '#9A7692',
+    '#A7829F',
+    '#A4789A',
+    '#B887AD',
+    '#CD9BC2',
+]
+
+
 // -------------------DATA VIS-------------------
 function renderTotalAmount(totalAmounts){
     const totalamount = id('total-amount');
@@ -94,15 +105,7 @@ function renderRacialDistribution(racialDistribution){
         labels: racialDistribution[1],
         datasets: [{
             data: racialDistribution[0],
-            backgroundColor:[
-                '#7B5573',
-                '#906E88',
-                '#9A7692',
-                '#A7829F',
-                '#A4789A',
-                '#B887AD',
-                '#CD9BC2',
-            ],
+            backgroundColor: colors,
         }]
     };
 
