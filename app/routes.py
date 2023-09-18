@@ -8,6 +8,7 @@ import pandas as pd
 # from celery import Celery
 from app.models import CountyData
 from app.test import Test
+import traceback
 
 def getchoices():
     ret = [i for i in county_fips] # list of county names
@@ -90,8 +91,18 @@ def getdata():
     except Exception as e:
         print(e)
         # Handle any errors that might occur during processing
-        return jsonify({'error': str(e)}), 500
+        # Capture the traceback and format it
+        error_line = traceback.format_exc().splitlines()[-1]
+        error_traceback = traceback.format_exc()
 
+        # Prepare an error message with traceback details and the line number
+        error_details = {
+            'error': str(e),
+            'line_number': error_line,
+            'traceback': error_traceback
+        }
+
+        return jsonify(error_details), 500
 # @Celery.task
 # def update_api(name):
 #     county = CountyData.query.filter_by(name=name).first()

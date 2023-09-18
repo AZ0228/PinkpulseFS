@@ -192,6 +192,19 @@ function toggleRuntime(runtime){
 
 // -------------------DATA PROCESSING-------------------
 
+function makeLegend(values,color){
+    let legend = document.createElement('div');
+    legend.classList.add('legend');
+    let colorBox = document.createElement('div');
+    colorBox.classList.add('color-box');
+    colorBox.style.backgroundColor = color;
+    let text = document.createElement('p');
+    text.innerHTML = values;
+    legend.appendChild(colorBox);
+    legend.appendChild(text);
+    return legend;
+}
+
 
 
 
