@@ -148,7 +148,7 @@ button img{
         scale:0.8;
         min-width: 0;
         width:70%;
-        top:0;
+        /* top:0; */
         left:0;
     }
 }

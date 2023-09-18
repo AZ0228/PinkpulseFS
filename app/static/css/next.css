@@ -341,18 +341,14 @@ body{
         padding: 10px 20px;
         font-size: 1em;
     }
-    .start{
-        width:100%;
-        min-height:60%;
-    }
+
     .main{
         height:95%;
         max-height: 1100px;
         margin: 0 30px 30px 30px;
     }
-    #back{
-        position: absolute;
-        scale: 0.8;
+    .start{
+        width:100%;
     }
     .statistics{
         flex-direction: column;
