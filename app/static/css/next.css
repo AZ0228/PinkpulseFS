@@ -331,9 +331,9 @@ body{
 @media(max-width:850px){
     :root{
         --h1:4em;
-        --h2:2em;
+        --h2:2.5em;
         --h3:1.7em;
-        --p: 1.4em;
+        --p: 1.3em;
         --psmall: 1.5em;
     }
     .container button{
@@ -348,7 +348,7 @@ body{
         margin: 0 30px 30px 30px;
     }
     .start{
-        width:100%;
+        width:100%
     }
     .statistics{
         flex-direction: column;
@@ -368,12 +368,14 @@ body{
     .submit{
         padding:7px 2.5px;
     }
+    #text{
+        margin:0;
+    }
 }
 
 @media (max-width:500px){
     :root{
         --h1: 3em;
-        --p: 1.4em;
         --psmall: 1.3em;
     }
     .container{
@@ -384,14 +386,18 @@ body{
         margin-bottom:100px;
 
     }
+    .statistic{
+        padding:30px;
+    }
+    
 
 }
 
 @media (max-width:350px){
     :root{
         --h1: 3em;
-        --p: 1.2em;
-        --psmall: 1em;
+        --p: 1.4em;
+        --psmall: 1.2em;
     }
     .container{
         gap:10px;
