@@ -4,7 +4,6 @@ let totalAmountinArea;
 let incomeDist;
 let racialDist;
 
-
 const colors = [
     '#7B5573',
     '#906E88',
@@ -14,7 +13,6 @@ const colors = [
     '#B887AD',
     '#CD9BC2',
 ]
-
 
 // -------------------DATA VIS-------------------
 function renderTotalAmount(totalAmounts){
