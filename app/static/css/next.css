@@ -388,7 +388,7 @@ body{
     .main{
         height:90%;
         margin-bottom:100px;
-
+        padding:10px;
     }
     .statistic{
         padding:30px;
@@ -396,13 +396,12 @@ body{
     .container{
         flex-direction: column;
     }
-
 }
 
 @media (max-width:350px){
     :root{
         --h1: 3em;
-        --p: 1.4em;
+        --p: 1.2em;
         --psmall: 1.2em;
 
     }
