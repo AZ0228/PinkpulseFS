@@ -231,6 +231,17 @@ function incomeStats(data){
     console.log(incomeStats);
 }
 
+function spendingStats(data){
+    let spendingStats = data['County Average'];
+    spendingStats *= 1000000;
+    spendingStats = Math.round(spendingStats);
+    let formattedNumber = '$';
+    formattedNumber +=spendingStats.toLocaleString();
+    let spendingStatsText = qs('.spending-stats');
+    spendingStatsText.textContent = formattedNumber;
+    console.log(spendingStats);
+}
+
 
 
 
@@ -270,6 +281,7 @@ function getData(){
 
         //=== stats ===
         incomeStats(data['income_dist']);
+        spendingStats(data['amount_per_year']);
 
         //=== charts ===
         setTimeout(() => {
