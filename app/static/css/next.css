@@ -349,6 +349,7 @@ body{
         height:95%;
         max-height: 1100px;
         margin: 0 30px 30px 30px;
+        padding:10px;
     }
     .start{
         width:100%
