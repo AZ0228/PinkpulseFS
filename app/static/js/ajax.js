@@ -161,6 +161,11 @@ function scrollToBottom() {
     });
 }
 
+function scrollto(elem){
+    const element = qs(elem);
+    element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+}
+
 function disableScroll() {
     // Disable scrolling by setting overflow hidden to the body
     document.body.style.overflowY = 'hidden';
@@ -226,6 +231,17 @@ function incomeStats(data){
     console.log(incomeStats);
 }
 
+function spendingStats(data){
+    let spendingStats = data['County Average'];
+    spendingStats *= 1000000;
+    spendingStats = Math.round(spendingStats);
+    let formattedNumber = '$';
+    formattedNumber +=spendingStats.toLocaleString();
+    let spendingStatsText = qs('.spending-stats');
+    spendingStatsText.textContent = formattedNumber;
+    console.log(spendingStats);
+}
+
 
 
 
@@ -255,7 +271,7 @@ function getData(){
     }) 
     .then(response => response.json())
     .then(data => {
-        scrollToBottom();
+        scrollto(".statistics");
         toggleLoading();
         let endTime = performance.now();
         let duration = endTime - startTime;
@@ -265,6 +281,7 @@ function getData(){
 
         //=== stats ===
         incomeStats(data['income_dist']);
+        spendingStats(data['amount_per_year']);
 
         //=== charts ===
         setTimeout(() => {

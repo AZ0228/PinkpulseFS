@@ -10,6 +10,12 @@ from app.models import CountyData
 from app.test import Test
 import traceback
 
+
+'''
+heroku logs --tail --app pinkpulse
+'''
+
+
 def getchoices():
     ret = [i for i in county_fips] # list of county names
     ret.sort()
