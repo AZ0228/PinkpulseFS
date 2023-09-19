@@ -55,8 +55,7 @@ function renderTotalAmount(totalAmounts){
                     display:false
                 },
                 title: {
-                    display: true,
-                    text: 'Amount Spent in Millions'
+                    display: false
                   }
             }
         },
@@ -202,6 +201,7 @@ function makeLegend(values,color){
     legend.appendChild(text);
     return legend;
 }
+
 
 
 
