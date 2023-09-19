@@ -351,6 +351,9 @@ body{
         margin: 0 30px 30px 30px;
         padding:10px;
     }
+    .mainSecond{
+        padding:0;
+    }
     .start{
         width:100%
     }
@@ -389,7 +392,6 @@ body{
     .main{
         height:90%;
         margin-bottom:100px;
-        padding:10px;
     }
     .statistic{
         padding:30px;
