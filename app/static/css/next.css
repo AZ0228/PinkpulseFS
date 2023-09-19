@@ -87,16 +87,19 @@ body{
     width: 90%;
     height: 65%;
     border-radius: 50px;
+    padding:30px;
     display:flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    box-sizing: border-box;
 }
 
 .mainSecond{
     flex-direction:row;
     justify-content: flex-end;
     background-color: var(--purple);
+    padding:0;
 }
 
 .container{
@@ -333,13 +336,13 @@ body{
         --h1:4em;
         --h2:2.5em;
         --h3:1.7em;
-        --p: 1.3em;
+        --p: 1.8em;
         --psmall: 1.5em;
     }
     .container button{
         border-radius:12.5px;
         padding: 10px 20px;
-        font-size: 1em;
+        /* font-size: 1em; */
     }
 
     .main{
@@ -377,6 +380,7 @@ body{
     :root{
         --h1: 3em;
         --psmall: 1.3em;
+        --p:1.4em;
     }
     .container{
         gap:10px;
@@ -389,7 +393,9 @@ body{
     .statistic{
         padding:30px;
     }
-    
+    .container{
+        flex-direction: column;
+    }
 
 }
 
@@ -398,6 +404,7 @@ body{
         --h1: 3em;
         --p: 1.4em;
         --psmall: 1.2em;
+
     }
     .container{
         gap:10px;
