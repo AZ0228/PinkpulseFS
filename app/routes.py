@@ -26,12 +26,14 @@ def formatracial(racialDistribution):
     white = racialDistribution[5]
     racialDistribution.pop(5)
     pop = []
+    offset = 0
     for i in range(len(racialDistribution)-1):
         if racialDistribution[i] == 0:
             pop.append(i)
     for i in pop:
-        racialDistribution.pop(i)
-        options.pop(i)
+        racialDistribution.pop(i-offset)
+        options.pop(i-offset)
+        offset += 1
     combined = dict(zip(racialDistribution,options))
     sorted_combined = dict(sorted(combined.items(),reverse=True))
     racialdist = list(sorted_combined.keys())
