@@ -12,9 +12,7 @@ class Test():
         }
     
     def income_distribution_women(self):
-        return {
-            "income-dist":[723010, 4366272]
-        }
+        return [723010, 4366272]
 
     def racial_statistics_women_county(self):
         return [84233, 7733, 82221, 0, 421110, 176708, 348397]

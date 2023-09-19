@@ -23,7 +23,7 @@ function renderTotalAmount(totalAmounts){
         datasets: [{
             data: [totalAmounts["County Average"], totalAmounts["State Average"], totalAmounts["National Average"]],
             backgroundColor: [
-                '#7B5573',
+                '#CD9BC2',
                 '#CD9BC2',
                 '#CD9BC2',
             ],
@@ -42,11 +42,26 @@ function renderTotalAmount(totalAmounts){
                 y: {
                     beginAtZero: true,
                     ticks:{
+                        color: '#A7829F',
                         font:{
                             size:11,
                             family:'Satoshi1',
-
                         }
+                    },
+                    grid:{
+                        color: '#A7829F',
+                    }
+                },
+                x:{
+                    ticks:{
+                        color: '#A7829F',
+                        font:{
+                            size:11,
+                            family:'Satoshi1',
+                        }
+                    },
+                    grid:{
+                        color: '#A7829F',
                     }
                 }
             },
@@ -69,7 +84,7 @@ function renderIncomeDistribution(incomeDistribution){
     const data = {
         labels: ['Low', 'Middle-High'],
         datasets: [{
-            data: incomeDistribution['income-dist'],
+            data: incomeDistribution,
             backgroundColor:[
                 '#7B5573',
                 '#CD9BC2',
@@ -202,6 +217,15 @@ function makeLegend(values,color){
     return legend;
 }
 
+function incomeStats(data){
+    let incomeStats = data[0]/data[1];
+    incomeStats *= 10;
+    incomeStats = Math.round(incomeStats);
+    let incomeStatsText = qs('.income-stats');
+    incomeStatsText.textContent = incomeStats;
+    console.log(incomeStats);
+}
+
 
 
 
@@ -239,6 +263,10 @@ function getData(){
         console.log(`API call took ${duration.toFixed(2)} seconds.`);
         console.log(data);
 
+        //=== stats ===
+        incomeStats(data['income_dist']);
+
+        //=== charts ===
         setTimeout(() => {
             renderTotalAmount(data['amount_per_year']);
             renderIncomeDistribution(data['income_dist']);

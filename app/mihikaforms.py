@@ -183,11 +183,7 @@ class County:
             k = 'Approximately {} percent of this county is low income.'.format(proportion*100)
         else:
             m, k = [], []
-        print (m)
-        print (k)
-        ret = {
-            'income-dist': [low_income,total_women-low_income],
-        }
+        ret = [low_income,total_women-low_income]
         return ret
     
     def racial_statistics_women_national():
