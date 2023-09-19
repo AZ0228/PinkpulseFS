@@ -28,15 +28,30 @@
     </div>
     {% include 'choose.html' %}
     <section class="statistics">
-        <div class="total-amount-container">
-            <canvas id="total-amount"></canvas>
-        </div>
-        <div class="income-dist-container">
-            <canvas id="income-dist"></canvas>
-        </div>
-        <div class="racial-dist-container">
-            <canvas id="racial-dist"></canvas>
-        </div>
+        <section class="statisticDisplay">
+            <div class="total-amount-container">
+                <canvas id="total-amount"></canvas>
+            </div>    
+            <div class="statisticsText">
+                <h2>Total Amount Spent on Period Products</h2>
+            </div>
+        </section>
+        <section class="statisticDisplay">
+            <div class="income-dist-container">
+                <canvas id="income-dist"></canvas>
+            </div>
+            <div class="statisticsText">
+                <h2>Income Distribution</h2>
+            </div>
+        </section>
+        <section class="statisticDisplay">
+            <div class="racial-dist-container">
+                <canvas id="racial-dist"></canvas>
+            </div>
+            <div class="statisticsText">
+                <h2>Racial Distribution</h2>
+            </div>
+        </section>
   
         
     </section>

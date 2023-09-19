@@ -9,6 +9,7 @@
     --psmall:1.8em;
     --bradius:25px;
     --bradius1:50px;
+    --graph: 400px;
 }
 
 @font-face {
@@ -265,19 +266,21 @@ body{
     padding:30px;
     box-sizing: border-box;
     display:flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .total-amount-container{
-    width:auto;
-    height: 40%;
+    width:var(--graph);
+    height: var(--graph);
 }
 .income-dist-container{
-    width:auto;
-    height: 50% ;
+    height:auto;
+    width: var(--graph) ;
 }
 .racial-dist-container{
-    width:auto;
-    height: 50% ;
+    height:auto;
+    width: var(--graph) ;
 
 }
 
@@ -331,6 +334,24 @@ body{
     transform:translateY(-1px);
 }
 
+.statisticDisplay{
+    background-color: var(--purple);
+    border-radius: 25px;
+    padding:30px;
+    margin:20px;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+}
+
+.statisticsText h2{
+    margin:0;
+    font-size: var(--h3);
+    margin-top: 30px;
+    color: var(--pink);
+    font-family: 'Satoshi';
+}
+
 @media(max-width:850px){
     :root{
         --h1:4em;
@@ -343,6 +364,9 @@ body{
         border-radius:12.5px;
         padding: 10px 20px;
         /* font-size: 1em; */
+    }
+    .statisticDisplay{
+        flex-direction: column;
     }
 
     .main{
@@ -383,8 +407,10 @@ body{
 @media (max-width:500px){
     :root{
         --h1: 3em;
+        --h3:1.5em;
         --psmall: 1.3em;
         --p:1.4em;
+        --graph:200px;
     }
     .container{
         gap:10px;
