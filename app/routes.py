@@ -27,15 +27,26 @@ def formatamount(amount):
         amount[entry] /= 1000000
     return amount
 
+def formatincome(incomeDistribution):
+    total = sum(incomeDistribution)
+    new_distribution = [round((i / total) * 100) for i in incomeDistribution]
+    return new_distribution
+
+
 def formatracial(racialDistribution):
     options = ['black','indigenous','asian','hawaiian','hispanic','other']
     white = racialDistribution[5]
     racialDistribution.pop(5)
     pop = []
     offset = 0
-    for i in range(len(racialDistribution)-1):
+    total = sum(racialDistribution)
+    for i in range(len(racialDistribution)):
         if racialDistribution[i] == 0:
             pop.append(i)
+        else:
+            racialDistribution[i] /= total
+            racialDistribution[i] *= 100
+            racialDistribution[i] = round(racialDistribution[i])
     for i in pop:
         racialDistribution.pop(i-offset)
         options.pop(i-offset)
@@ -44,7 +55,7 @@ def formatracial(racialDistribution):
     sorted_combined = dict(sorted(combined.items(),reverse=True))
     racialdist = list(sorted_combined.keys())
     racialoptions = list(sorted_combined.values())
-    racialdist.append(white)
+    racialdist.append(round(100*(white/total)))
     racialoptions.append('white')
     return racialdist, racialoptions
 
@@ -90,8 +101,9 @@ def getdata():
         amount_per_year = county.amount_per_year()
         amount_per_year = formatamount(amount_per_year) #8 seconds
         income_dist = county.income_distribution_women() # 5 seconds -> 0 seconds
+        income_dist = formatincome(income_dist)
         racial_dist = county.racial_statistics_women_county() #8-10 seconds
-        racial_dist, options = formatracial(racial_dist) # 0 seconds
+        racial_dist, options = formatracial(racial_dist) 
         racial = [racial_dist, options]
         ret = {
             'amount_per_year': amount_per_year,

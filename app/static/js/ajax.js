@@ -70,8 +70,11 @@ function renderTotalAmount(totalAmounts){
                     display:false
                 },
                 title: {
-                    display: false
-                  }
+                    display: true,
+                    text: 'Total Amount Spent (Millions)',
+                    color:  '#A7829F',
+                },
+
             }
         },
     });
@@ -105,7 +108,14 @@ function renderIncomeDistribution(incomeDistribution){
             },
             title: {
               display: false,
-            }
+            },
+            tooltip: {
+                callbacks: {
+                  label: function(context) {
+                    return context.parsed + '%';
+                  }
+                }
+              },
           }
         },
       });
@@ -134,7 +144,14 @@ function renderRacialDistribution(racialDistribution){
             },
             title: {
               display: false,
-            }
+            },
+            tooltip: {
+                callbacks: {
+                  label: function(context) {
+                    return context.parsed + '%';
+                  }
+                }
+            },
           }
         },
       });
@@ -223,8 +240,8 @@ function makeLegend(values,color){
 }
 
 function incomeStats(data){
-    let incomeStats = data[0]/data[1];
-    incomeStats *= 10;
+    let incomeStats = data[0];
+    incomeStats /= 10;
     incomeStats = Math.round(incomeStats);
     let incomeStatsText = qs('.income-stats');
     incomeStatsText.textContent = incomeStats;

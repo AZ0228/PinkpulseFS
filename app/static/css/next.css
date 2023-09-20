@@ -436,9 +436,9 @@ body{
         flex-direction: column;
     }
     .total-amount-container{
-        width:95%;
+        width:100%;
         height:300px;
-        transform:translateX(-20px);
+        transform:translateX(-10px);
     }
 }
 
