@@ -276,13 +276,12 @@ body{
     height: var(--graph);
 }
 .income-dist-container{
-    height:auto;
-    width: var(--graph) ;
+    height: var(--graph);
+    width: var(--graph);
 }
 .racial-dist-container{
-    height:auto;
-    width: var(--graph) ;
-
+    height: var(--graph);
+    width: var(--graph);
 }
 
 .runtime{
@@ -370,7 +369,7 @@ body{
     font-size: var(--ptext);
     margin: 0;
     width:90%;
-    margin-left: 20px;
+    /* margin-left: 20px; */
 }
 
 .venusContainer{
@@ -378,8 +377,8 @@ body{
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin-left: 20px;
-    gap: 10px;
+    /* margin-left: 20px; */
+    /* gap: 10px; */
 }
 
 .venus{
@@ -391,6 +390,30 @@ body{
 
 .venusSelected{
     background-image: url(../images/venus1.svg);
+}
+
+
+
+.legend-item{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color:var(--pink)
+}
+
+.legend-item .text{
+    max-height: 30px;;
+}
+
+.color{
+    height:30px;
+    width:30px;
+}
+
+.pieContainer{
+    display:flex;
+    align-items: center;
+    gap: 30px;
 }
 
 @media(max-width:850px){
@@ -444,6 +467,15 @@ body{
     #text{
         margin:0;
     }
+    .statisticsText{
+        align-items: center;
+    }
+    .statisticsText h2{
+        text-align: center;
+    }
+    .statisticsText p{
+        text-align: center;
+    }
 }
 
 @media (max-width:500px){
@@ -453,6 +485,7 @@ body{
         --psmall: 1.3em;
         --p:1.4em;
         --graph:200px;
+        --ptext:1.2em;
     }
     .container{
         gap:10px;
@@ -472,6 +505,27 @@ body{
         height:300px;
         transform:translateX(-10px);
     }
+    .pieContainer{
+        flex-direction: column;
+        align-items: center;
+    }
+    .legend-item{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color:var(--pink)
+    }
+    
+    .legend-item .text{
+        max-height: 15px;
+        font-size: 0.7em;
+    }
+    
+    .color{
+        height:15px;
+        width:15px;
+    }
+    
 }
 
 @media (max-width:350px){
@@ -479,6 +533,7 @@ body{
         --h1: 3em;
         --p: 1.2em;
         --psmall: 1.2em;
+        --ptext:1em;
 
     }
     .container{

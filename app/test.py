@@ -15,4 +15,4 @@ class Test():
         return [723010, 4366272]
 
     def racial_statistics_women_county(self):
-        return [84233, 7733, 82221, 0, 421110, 176708, 348397]
+        return [84233, 7733, 82221, 30000, 421110, 176708, 348397]
