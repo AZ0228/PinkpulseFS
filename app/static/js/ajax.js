@@ -56,7 +56,7 @@ function renderTotalAmount(totalAmounts){
                     ticks:{
                         color: '#A7829F',
                         font:{
-                            size:11,
+                            size:16,
                             family:'Satoshi1',
                         }
                     },
