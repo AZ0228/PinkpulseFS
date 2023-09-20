@@ -15,7 +15,7 @@ const colors = [
 ]
 
 // -------------------DATA VIS-------------------
-function renderTotalAmount(totalAmounts){
+function renderTotalAmount(totalAmounts) {
     const totalamount = id('total-amount');
     const labels = ['county average', 'state average', 'national average'];
     const data = {
@@ -31,7 +31,7 @@ function renderTotalAmount(totalAmounts){
         }]
     };
 
-    if(totalAmountinArea){totalAmountinArea.destroy();}
+    if (totalAmountinArea) { totalAmountinArea.destroy(); }
 
     totalAmountinArea = new Chart(totalamount, {
         type: 'bar',
@@ -41,38 +41,42 @@ function renderTotalAmount(totalAmounts){
             scales: {
                 y: {
                     beginAtZero: true,
-                    ticks:{
+                    ticks: {
                         color: '#A7829F',
-                        font:{
-                            size:11,
-                            family:'Satoshi1',
+                        font: {
+                            size: 11,
+                            family: 'Satoshi1',
                         }
                     },
-                    grid:{
+                    grid: {
                         color: '#A7829F',
                     }
                 },
-                x:{
-                    ticks:{
+                x: {
+                    ticks: {
                         color: '#A7829F',
-                        font:{
-                            size:16,
-                            family:'Satoshi1',
+                        font: {
+                            size: 16,
+                            family: 'Satoshi1',
                         }
                     },
-                    grid:{
+                    grid: {
                         color: '#A7829F',
                     }
                 }
             },
-            plugins:{
-                legend:{
-                    display:false
+            plugins: {
+                legend: {
+                    display: false
                 },
                 title: {
                     display: true,
                     text: 'Total Amount Spent (Millions)',
-                    color:  '#A7829F',
+                    color: '#A7829F',
+                    font: {
+                        size: 17,
+                        family: 'Satoshi1',
+                    }
                 },
 
             }
@@ -80,7 +84,7 @@ function renderTotalAmount(totalAmounts){
     });
 }
 
-function renderIncomeDistribution(incomeDistribution){
+function renderIncomeDistribution(incomeDistribution) {
     const income = id('income-dist');
     console.log('income distribution');
     console.log(incomeDistribution);
@@ -88,40 +92,40 @@ function renderIncomeDistribution(incomeDistribution){
         labels: ['Low', 'Middle-High'],
         datasets: [{
             data: incomeDistribution,
-            backgroundColor:[
+            backgroundColor: [
                 '#7B5573',
                 '#CD9BC2',
             ],
         }]
     };
 
-    if(incomeDist){incomeDist.destroy();}
+    if (incomeDist) { incomeDist.destroy(); }
 
     incomeDist = new Chart(income, {
         type: 'pie',
         data: data,
         options: {
-          responsive: true,
-          plugins: {
-            legend: {
-                display:false
-            },
-            title: {
-              display: false,
-            },
-            tooltip: {
-                callbacks: {
-                  label: function(context) {
-                    return context.parsed + '%';
-                  }
-                }
-              },
-          }
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: false,
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function (context) {
+                            return context.parsed + '%';
+                        }
+                    }
+                },
+            }
         },
-      });
+    });
 }
 
-function renderRacialDistribution(racialDistribution){
+function renderRacialDistribution(racialDistribution) {
     const racial = id('racial-dist');
     const data = {
         labels: racialDistribution[1],
@@ -131,30 +135,30 @@ function renderRacialDistribution(racialDistribution){
         }]
     };
 
-    if(racialDist){racialDist.destroy();}
+    if (racialDist) { racialDist.destroy(); }
 
     racialDist = new Chart(racial, {
         type: 'pie',
         data: data,
         options: {
-          responsive: true,
-          plugins: {
-            legend: {
-                    display:false            
-            },
-            title: {
-              display: false,
-            },
-            tooltip: {
-                callbacks: {
-                  label: function(context) {
-                    return context.parsed + '%';
-                  }
-                }
-            },
-          }
+            responsive: true,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: false,
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function (context) {
+                            return context.parsed + '%';
+                        }
+                    }
+                },
+            }
         },
-      });
+    });
 
 }
 
@@ -178,9 +182,9 @@ function scrollToBottom() {
     });
 }
 
-function scrollto(elem){
+function scrollto(elem) {
     const element = qs(elem);
-    element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+    element.scrollIntoView({ behavior: "smooth", block: "start", inline: "nearest" });
 }
 
 function disableScroll() {
@@ -199,8 +203,8 @@ function handleScroll(num) {
     }
 }
 
-function toggleLoading(){
-    if(loading){
+function toggleLoading() {
+    if (loading) {
         loading = false;
         qs('.loader').classList.remove('active');
         qs('.choose').classList.remove('blur');
@@ -217,7 +221,7 @@ function toggleLoading(){
     }
 }
 
-function toggleRuntime(runtime){
+function toggleRuntime(runtime) {
     let runtimeText = qs('.runtime-text');
     let runtimeElement = qs('.runtime');
     runtimeText.innerHTML = `API call took ${runtime.toFixed(2)} seconds.`;
@@ -226,7 +230,7 @@ function toggleRuntime(runtime){
 
 // -------------------DATA PROCESSING-------------------
 
-function makeLegend(values,color){
+function makeLegend(values, color) {
     let legend = document.createElement('div');
     legend.classList.add('legend');
     let colorBox = document.createElement('div');
@@ -239,21 +243,24 @@ function makeLegend(values,color){
     return legend;
 }
 
-function incomeStats(data){
+function incomeStats(data) {
     let incomeStats = data[0];
     incomeStats /= 10;
     incomeStats = Math.round(incomeStats);
     let incomeStatsText = qs('.income-stats');
     incomeStatsText.textContent = incomeStats;
-    console.log(incomeStats);
+    symbols = qsa('.venus');
+    for (let i=0;i<incomeStats;i++) {
+        symbols[i].classList.add('venusSelected');
+    }
 }
 
-function spendingStats(data){
+function spendingStats(data) {
     let spendingStats = data['County Average'];
     spendingStats *= 1000000;
     spendingStats = Math.round(spendingStats);
     let formattedNumber = '$';
-    formattedNumber +=spendingStats.toLocaleString();
+    formattedNumber += spendingStats.toLocaleString();
     let spendingStatsText = qs('.spending-stats');
     spendingStatsText.textContent = formattedNumber;
     console.log(spendingStats);
@@ -266,14 +273,14 @@ function spendingStats(data){
 
 // -------------------AJAX---------------------
 
-function getData(){
+function getData() {
     const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
     let userinput = document.querySelector('select').value;
     console.log(userinput);
     const startTime = performance.now();
     toggleLoading();
     let runtimeElement = qs('.runtime');
-    if(runtimeElement.classList.contains('active')){
+    if (runtimeElement.classList.contains('active')) {
         toggleRuntime(0);
     }
     fetch('/getdata', {
@@ -281,53 +288,53 @@ function getData(){
         headers: {
             'Content-Type': 'application/json',
             'X-CSRFToken': csrfToken
-          },
+        },
         body: JSON.stringify({
             input: userinput,
         })
-    }) 
-    .then(response => response.json())
-    .then(data => {
-        scrollto(".statistics");
-        toggleLoading();
-        let endTime = performance.now();
-        let duration = endTime - startTime;
-        duration = duration/1000;
-        console.log(`API call took ${duration.toFixed(2)} seconds.`);
-        console.log(data);
-
-        //=== stats ===
-        incomeStats(data['income_dist']);
-        spendingStats(data['amount_per_year']);
-
-        //=== charts ===
-        setTimeout(() => {
-            renderTotalAmount(data['amount_per_year']);
-            renderIncomeDistribution(data['income_dist']);
-            renderRacialDistribution(data['racial_dist']);
-        }, 200);
-        setTimeout(() => {
-            toggleRuntime(duration);
-        }, 500);
     })
+        .then(response => response.json())
+        .then(data => {
+            scrollto(".statistics");
+            toggleLoading();
+            let endTime = performance.now();
+            let duration = endTime - startTime;
+            duration = duration / 1000;
+            console.log(`API call took ${duration.toFixed(2)} seconds.`);
+            console.log(data);
+
+            //=== stats ===
+            incomeStats(data['income_dist']);
+            spendingStats(data['amount_per_year']);
+
+            //=== charts ===
+            setTimeout(() => {
+                renderTotalAmount(data['amount_per_year']);
+                renderIncomeDistribution(data['income_dist']);
+                renderRacialDistribution(data['racial_dist']);
+            }, 200);
+            setTimeout(() => {
+                toggleRuntime(duration);
+            }, 500);
+        })
 }
 
-function qs(selector){
+function qs(selector) {
     return document.querySelector(selector);
 }
 
-function qsa(selector){
+function qsa(selector) {
     return document.querySelectorAll(selector);
 }
 
-function id(id){
+function id(id) {
     return document.getElementById(id);
 }
 
 window.addEventListener('load', () => {
     enableScroll();
     setTimeout(() => {
-        window.scrollTo(0, 0);  
+        window.scrollTo(0, 0);
     }, 100);
     disableScroll();
 });
