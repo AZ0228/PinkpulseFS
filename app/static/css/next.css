@@ -341,12 +341,12 @@ body{
     margin:20px;
     max-width: 1200px;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     width: 90%;
     margin: 20px 30px;
     box-sizing: border-box;
     font-family: 'Satoshi';
-
+    gap: 30px;
 }
 
 .statisticsText h2{
@@ -376,6 +376,7 @@ body{
     }
     .statisticDisplay{
         flex-direction: column;
+        align-items: center;
     }
 
     .main{
@@ -434,6 +435,11 @@ body{
     .container{
         flex-direction: column;
     }
+    .total-amount-container{
+        width:95%;
+        height:300px;
+        transform:translateX(-20px);
+    }
 }
 
 @media (max-width:350px){
@@ -448,6 +454,11 @@ body{
     }
     .container button{
         padding: 5px 10px;
+    }
+    .total-amount-container{
+        width:115%;
+        height:300px;
+        transform:translateX(-20px);
     }
 }
 
