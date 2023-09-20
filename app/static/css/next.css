@@ -5,11 +5,12 @@
     --h1: 5em;
     --h2: 3.2em;
     --h3: 2em;
-    --p:2em;
+    --p:2.5em;
     --psmall:1.8em;
     --bradius:25px;
     --bradius1:50px;
     --graph: 400px;
+    --ptext: 1.5em;
 }
 
 @font-face {
@@ -349,16 +350,47 @@ body{
     gap: 30px;
 }
 
+.statisticsText{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+
 .statisticsText h2{
     margin:0;
     font-size: var(--h3);
     margin-top: 30px;
     color: var(--pink);
-
+    width: 100%;
 }
 
 .statisticsText p{
     color:var(--pink);
+    font-size: var(--ptext);
+    margin: 0;
+    width:90%;
+    margin-left: 20px;
+}
+
+.venusContainer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-left: 20px;
+    gap: 10px;
+}
+
+.venus{
+    width:30px;
+    height:30px;
+    background-image: url(../images/venus2.svg);
+    background-size: cover;
+}
+
+.venusSelected{
+    background-image: url(../images/venus1.svg);
 }
 
 @media(max-width:850px){
