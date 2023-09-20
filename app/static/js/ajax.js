@@ -12,7 +12,26 @@ const colors = [
     '#A4789A',
     '#B887AD',
     '#CD9BC2',
-]
+];
+
+const colors1 = [
+    '#A6839E',
+    '#B295AB',
+    '#C1A6B8',
+    '#D1B7C5',
+    '#E0C9D3',
+    '#CD9BC2',
+];
+
+const colors2 = [
+    "#A6839E",
+    "#B295AB",
+    "#C1A6B8",
+    "#D1B7C5",
+    "#E0C9D3",
+    "#F0DAE0",
+    "#EDD6E0" // Ending color
+];
 
 // -------------------DATA VIS-------------------
 function renderTotalAmount(totalAmounts) {
@@ -21,11 +40,11 @@ function renderTotalAmount(totalAmounts) {
     const data = {
         labels: labels,
         datasets: [{
-            data: [totalAmounts["County Average"], totalAmounts["State Average"], totalAmounts["National Average"]],
+            data: [Math.round(totalAmounts["County Average"]), Math.round(totalAmounts["State Average"]), Math.round(totalAmounts["National Average"])],
             backgroundColor: [
                 '#CD9BC2',
-                '#CD9BC2',
-                '#CD9BC2',
+                '#906E88',
+                '#906E88',
             ],
             borderRadius: 10,
         }]
@@ -78,7 +97,13 @@ function renderTotalAmount(totalAmounts) {
                         family: 'Satoshi1',
                     }
                 },
-
+                tooltip: {
+                    callbacks: {
+                        label: function (context) {
+                            return context.parsed.y + ' Million';
+                        }
+                    }
+                },
             }
         },
     });
@@ -93,9 +118,10 @@ function renderIncomeDistribution(incomeDistribution) {
         datasets: [{
             data: incomeDistribution,
             backgroundColor: [
-                '#7B5573',
                 '#CD9BC2',
+                '#906E88',
             ],
+            borderWidth:0
         }]
     };
 
@@ -131,7 +157,9 @@ function renderRacialDistribution(racialDistribution) {
         labels: racialDistribution[1],
         datasets: [{
             data: racialDistribution[0],
-            backgroundColor: colors,
+            backgroundColor: colors2, //=====================================================
+            borderWidth:0
+
         }]
     };
 
@@ -230,17 +258,23 @@ function toggleRuntime(runtime) {
 
 // -------------------DATA PROCESSING-------------------
 
-function makeLegend(values, color) {
-    let legend = document.createElement('div');
-    legend.classList.add('legend');
-    let colorBox = document.createElement('div');
-    colorBox.classList.add('color-box');
-    colorBox.style.backgroundColor = color;
-    let text = document.createElement('p');
-    text.innerHTML = values;
-    legend.appendChild(colorBox);
-    legend.appendChild(text);
-    return legend;
+function makeLegend(values, color, legend) {
+    let colors = color
+    colors.slice(0, values.length);
+    let legendElement = qs(legend);
+    for(let i=0;i<values.length;i++){
+        let div = document.createElement('div');
+        div.classList.add('legend-item');
+        let color = document.createElement('div');
+        color.classList.add('color');
+        color.style.backgroundColor = colors[i];
+        let text = document.createElement('div');
+        text.classList.add('text');
+        text.textContent = values[i];
+        div.appendChild(color);
+        div.appendChild(text);
+        legendElement.appendChild(div);
+    }
 }
 
 function incomeStats(data) {
@@ -312,6 +346,9 @@ function getData() {
                 renderTotalAmount(data['amount_per_year']);
                 renderIncomeDistribution(data['income_dist']);
                 renderRacialDistribution(data['racial_dist']);
+                makeLegend(data['racial_dist'][1], colors2, '.racial-legend');
+                makeLegend(['low income','mid/hi income'], ['#CD9BC2','#906E88'], '.income-legend');
+
             }, 200);
             setTimeout(() => {
                 toggleRuntime(duration);
