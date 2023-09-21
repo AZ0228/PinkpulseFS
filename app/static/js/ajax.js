@@ -3,6 +3,9 @@ let loading = false;
 let totalAmountinArea;
 let incomeDist;
 let racialDist;
+let summary;
+
+let scatterData;
 
 const colors = [
     '#7B5573',
@@ -190,14 +193,44 @@ function renderRacialDistribution(racialDistribution) {
 
 }
 
-function renderSummary(name, data, names){
-//     //scatter plot
-//     let scatterColors = [];
-//     const scatter = id('scatter');
-//     const data = {
-//         data: data,
-//         backgroundColor: scatterColors
-//     };
+function renderSummary(name, coords, names){
+    //scatter plot
+    let scattercolor = '#A7829F';
+    let scatterColors = new Array(coords.length).fill(scattercolor);
+    if(name!=''){ scatterColors[names[name]] = '#CD9BC2'; }//change color of selected county
+    const scatter = id('scatter');
+    const data = {
+        datasets:[{
+            data: coords,
+            backgroundColor: scatterColors
+        }]
+    };
+    if (summary) { summary.destroy(); }
+
+    summary = new Chart(scatter, {
+        type: 'scatter',
+        data: data,
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                },
+                title: {
+                    display: false,
+                },
+                // tooltip: {
+                //     callbacks: {
+                //         label: function (context) {
+                //             return context.parsed + '%';
+                //         }
+                //     }
+                // },
+            }
+        },
+    });
+
 } //WORK IN PROGRESS
 
 
@@ -384,10 +417,17 @@ function getData() {
 
 function getSummary(){
     const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+    let name = document.querySelector('select').value;
+    if(name === 'test'){
+        name = 'Los Angeles County, California'
+    } else if (name === ''){
+        console.log('empty :((');
+        return;
+    }
     fetch('/getsummary')
         .then(response => response.json())
         .then(data => {
-            console.log(data);
+            renderSummary(name, data['coords'],data['names'])
         })
 }
 
@@ -409,5 +449,5 @@ window.addEventListener('load', () => {
         window.scrollTo(0, 0);
     }, 100);
     disableScroll();
-    getSummary();
+    // getSummary();
 });
