@@ -9,8 +9,12 @@
             </p>
             <div class="container disappear">
                 <button id="county">county classifier</button>
-                <button id="statistics" onclick="statistic()">statistic finder</button>
+                <button id="statistics" onclick="statistic();   getSummary();">statistic finder</button>
             </div>
+            <div class="scatter-container">
+                <canvas id="scatter"></canvas>
+            </div>
+
             <section class="statistic">
                 <div class="content">
                     <a href="" id="back"><img src="{{ url_for('static', filename='images/backarrow.svg') }}" alt=""><h3>back</h3></a>

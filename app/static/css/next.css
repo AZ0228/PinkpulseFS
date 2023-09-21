@@ -416,6 +416,19 @@ body{
     gap: 30px;
 }
 
+.scatter-container{
+    height:80%;
+    width:45%;
+    margin:30px;
+    position: absolute;
+    z-index:-1
+}
+
+.relative{
+    position: relative;
+    z-index: 1;
+}
+
 @media(max-width:850px){
     :root{
         --h1:4em;
