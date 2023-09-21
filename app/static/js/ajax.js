@@ -190,6 +190,16 @@ function renderRacialDistribution(racialDistribution) {
 
 }
 
+function renderSummary(name, data, names){
+//     //scatter plot
+//     let scatterColors = [];
+//     const scatter = id('scatter');
+//     const data = {
+//         data: data,
+//         backgroundColor: scatterColors
+//     };
+} //WORK IN PROGRESS
+
 
 // -------------------LOADER-------------------
 
@@ -287,7 +297,6 @@ function makeLegend(values, color, legend) {
     legendElement.appendChild(legend2);
 }
 
-
 function incomeStats(data) {
     clearIncomeStats();
     let incomeStats = data[0];
@@ -373,6 +382,15 @@ function getData() {
         })
 }
 
+function getSummary(){
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+    fetch('/getsummary')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+        })
+}
+
 function qs(selector) {
     return document.querySelector(selector);
 }
@@ -391,4 +409,5 @@ window.addEventListener('load', () => {
         window.scrollTo(0, 0);
     }, 100);
     disableScroll();
+    getSummary();
 });

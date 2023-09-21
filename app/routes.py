@@ -87,6 +87,47 @@ def statisticfinder():
 
     return render_template('statistic.html',statisticfinder = statistic, data = data)
 
+@app.route('/getsummary',methods=['GET'])
+def getsummary():
+    print('Getting summary ...')
+    try:
+        names = {}
+        coords = []
+        with open('app/static/name_poverty.txt','r') as f:
+            for line in f:
+                # stores name and index as key value pair in dict names
+                split = line.split('"')
+                print(split)
+                names[split[1]] = int(split[0][:-1])
+                values = split[2][1:].split(',')
+                values =  [float(i) for i in values]
+                values[1] /= 1000000
+                coord = {"x": values[0], "y": values[1]}
+                coords.append(coord)
+        ret = {
+            'names': names,
+            'coords': coords
+        }
+        return jsonify(ret)
+
+        return 1
+    except Exception as e:
+        print(e)
+        # Handle any errors that might occur during processing
+        # Capture the traceback and format it
+        error_line = traceback.format_exc().splitlines()[-1]
+        error_traceback = traceback.format_exc()
+
+        # Prepare an error message with traceback details and the line number
+        error_details = {
+            'error': str(e),
+            'line_number': error_line,
+            'traceback': error_traceback
+        }
+
+        return jsonify(error_details), 500
+
+
 @app.route('/getdata', methods=['POST','GET'])
 def getdata():
     print('Getting data ...')
