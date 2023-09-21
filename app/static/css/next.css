@@ -83,7 +83,7 @@ body{
 
 .main{
     background-color: var(--pink);
-    margin: 3px 3vw 8vh 4vw;
+    /* margin: 3px 3vw 8vh 4vw; */
     max-width: 1200px;
     max-height: 700px;
     width: 90%;
