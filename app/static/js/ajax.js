@@ -262,6 +262,9 @@ function makeLegend(values, color, legend) {
     let colors = color
     colors.slice(0, values.length);
     let legendElement = qs(legend);
+    let legend1 = document.createElement('div');
+    let legend2 = document.createElement('div');
+    let midpoint = Math.ceil(values.length / 2);
     for(let i=0;i<values.length;i++){
         let div = document.createElement('div');
         div.classList.add('legend-item');
@@ -273,8 +276,14 @@ function makeLegend(values, color, legend) {
         text.textContent = values[i];
         div.appendChild(color);
         div.appendChild(text);
-        legendElement.appendChild(div);
+        if(i<midpoint){
+            legend1.appendChild(div);
+        } else {
+            legend2.appendChild(div);
+        }
     }
+    legendElement.appendChild(legend1);
+    legendElement.appendChild(legend2);
 }
 
 function incomeStats(data) {
