@@ -262,6 +262,7 @@ function makeLegend(values, color, legend) {
     let colors = color
     colors.slice(0, values.length);
     let legendElement = qs(legend);
+    legendElement.innerHTML = '';
     let legend1 = document.createElement('div');
     let legend2 = document.createElement('div');
     let midpoint = Math.ceil(values.length / 2);
@@ -286,7 +287,9 @@ function makeLegend(values, color, legend) {
     legendElement.appendChild(legend2);
 }
 
+
 function incomeStats(data) {
+    clearIncomeStats();
     let incomeStats = data[0];
     incomeStats /= 10;
     incomeStats = Math.round(incomeStats);
@@ -309,7 +312,12 @@ function spendingStats(data) {
     console.log(spendingStats);
 }
 
-
+function clearIncomeStats(){
+    symbols = qsa('.venus');
+    for (let i=0;i<symbols.length;i++) {
+        symbols[i].classList.remove('venusSelected');
+    }
+}
 
 
 
