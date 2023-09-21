@@ -1,4 +1,3 @@
-,NAMES,POVERTY %,AMOUNT SPENT
 0,"Lake County, California",18.9,5219880.0
 1,"Yuba County, California",14.7,6711840.0
 2,"Sonoma County, California",6.8,41541600.0
