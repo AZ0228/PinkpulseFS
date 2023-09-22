@@ -193,11 +193,15 @@ function renderRacialDistribution(racialDistribution) {
 
 }
 
-function renderSummary(name, coords, names){
+function renderSummary(name){
     //scatter plot
+    console.log(2);
+    let names = scatterData['names'];
+    let coords = scatterData['coords'];
     let scattercolor = '#A7829F';
     let scatterColors = new Array(coords.length).fill(scattercolor);
     if(name!=''){ scatterColors[names[name]] = '#CD9BC2'; }//change color of selected county
+    
     const scatter = id('scatter');
     const data = {
         datasets:[{
@@ -213,7 +217,36 @@ function renderSummary(name, coords, names){
         options: {
             responsive: true,
             maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        color: '#A7829F',
+                        font: {
+                            size: 11,
+                            family: 'Satoshi1',
+                        }
+                    },
+                    grid: {
+                        color: '#A7829F',
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: '#A7829F',
+                        font: {
+                            size: 16,
+                            family: 'Satoshi1',
+                        }
+                    },
+                    grid: {
+                        color: '#A7829F',
+                    }
+                }
+            },
+
             plugins: {
+                
                 legend: {
                     display: false
                 },
@@ -427,7 +460,8 @@ function getSummary(){
     fetch('/getsummary')
         .then(response => response.json())
         .then(data => {
-            renderSummary(name, data['coords'],data['names'])
+            scatterData = data; 
+            renderSummary(name)
         })
 }
 
@@ -449,5 +483,8 @@ window.addEventListener('load', () => {
         window.scrollTo(0, 0);
     }, 100);
     disableScroll();
+    let drop = document.querySelector('.dropdown');
+    drop.addEventListener('change', ()=> {renderSummary(drop.value)});
+
     // getSummary();
 });
