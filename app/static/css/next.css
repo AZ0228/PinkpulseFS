@@ -489,6 +489,9 @@ body{
     .statisticsText p{
         text-align: center;
     }
+    .scatter-container{
+        display:none;
+    }
 }
 
 @media (max-width:500px){

@@ -200,13 +200,14 @@ function renderSummary(name){
     let coords = scatterData['coords'];
     let scattercolor = '#A7829F';
     let scatterColors = new Array(coords.length).fill(scattercolor);
-    if(name!=''){ scatterColors[names[name]] = '#CD9BC2'; }//change color of selected county
+    if(name!=''){ scatterColors[names[name]] = '#EDD6E0'; }//change color of selected county
     
     const scatter = id('scatter');
     const data = {
         datasets:[{
             data: coords,
-            backgroundColor: scatterColors
+            backgroundColor: scatterColors,
+            pointRadius:6,
         }]
     };
     if (summary) { summary.destroy(); }
@@ -461,7 +462,9 @@ function getSummary(){
         .then(response => response.json())
         .then(data => {
             scatterData = data; 
-            renderSummary(name)
+            setTimeout(() => {         
+                renderSummary(name)
+            }, 1000);
         })
 }
 
