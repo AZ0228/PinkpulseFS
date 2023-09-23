@@ -198,6 +198,7 @@ function renderSummary(name){
     console.log(2);
     let names = scatterData['names'];
     let coords = scatterData['coords'];
+    let namesList = scatterData['namesList'];
     let scattercolor = '#A7829F';
     let scatterColors = new Array(coords.length).fill(scattercolor);
     if(name!=''){ scatterColors[names[name]] = '#EDD6E0'; }//change color of selected county
@@ -236,7 +237,7 @@ function renderSummary(name){
                     ticks: {
                         color: '#A7829F',
                         font: {
-                            size: 16,
+                            size: 11,
                             family: 'Satoshi1',
                         }
                     },
@@ -254,13 +255,18 @@ function renderSummary(name){
                 title: {
                     display: false,
                 },
-                // tooltip: {
-                //     callbacks: {
-                //         label: function (context) {
-                //             return context.parsed + '%';
-                //         }
-                //     }
-                // },
+                tooltip: {
+                    callbacks: {
+                        title: function (context) {
+                            const index = context[0].dataIndex;
+                            return namesList[index];
+                        },
+                        // label: function (context) {
+                        //     return context.parsed;
+                        // }
+
+                    }
+                },
             }
         },
     });
