@@ -194,6 +194,7 @@ function renderRacialDistribution(racialDistribution) {
 }
 
 function renderSummary(name){
+    // if(window.innerWidth<850){return;}
     //scatter plot
     console.log(2);
     let names = scatterData['names'];
@@ -231,6 +232,16 @@ function renderSummary(name){
                     },
                     grid: {
                         color: '#A7829F',
+                    },
+                    title:{
+                        display:true,
+                        color: '#CD9BC2',
+                        font: {
+                            size: 17,
+                            family: 'Satoshi1',
+                        },
+
+                        text: 'Total Amount Spent (Millions)',
                     }
                 },
                 x: {
@@ -243,6 +254,15 @@ function renderSummary(name){
                     },
                     grid: {
                         color: '#A7829F',
+                    },
+                    title:{
+                        display:true,
+                        color: '#CD9BC2',
+                        font: {
+                            size: 17,
+                            family: 'Satoshi1',
+                        },
+                        text: '% of Low Income Residents',
                     }
                 }
             },
@@ -253,7 +273,13 @@ function renderSummary(name){
                     display: false
                 },
                 title: {
-                    display: false,
+                    display: true,
+                    text: "California in Summary",
+                    color: '#CD9BC2',
+                    font: {
+                        size: 26,
+                        family: 'Satoshi',
+                    },
                 },
                 tooltip: {
                     callbacks: {
