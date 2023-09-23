@@ -92,6 +92,7 @@ def getsummary():
     print('Getting summary ...')
     try:
         names = {}
+        namesList = []
         coords = []
         with open('app/static/name_poverty.txt','r') as f:
             for line in f:
@@ -99,6 +100,7 @@ def getsummary():
                 split = line.split('"')
                 print(split)
                 names[split[1]] = int(split[0][:-1])
+                namesList.append(split[1])
                 values = split[2][1:].split(',')
                 values =  [float(i) for i in values]
                 values[1] /= 1000000
@@ -106,7 +108,8 @@ def getsummary():
                 coords.append(coord)
         ret = {
             'names': names,
-            'coords': coords
+            'coords': coords, 
+            'namesList': namesList
         }
         return jsonify(ret)
 
