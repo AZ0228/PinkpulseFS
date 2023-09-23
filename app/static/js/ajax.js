@@ -236,7 +236,7 @@ function renderSummary(name){
                     ticks: {
                         color: '#A7829F',
                         font: {
-                            size: 16,
+                            size: 11,
                             family: 'Satoshi1',
                         }
                     },
