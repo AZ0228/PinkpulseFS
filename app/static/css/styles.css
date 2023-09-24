@@ -180,7 +180,7 @@ button img{
     #logo{
         /* max-width: 70vw; */
         width: 100%;
-        background-color: var(--bg);
+        /* background-color: var(--bg); */
         padding: 15px;
         border-radius: 25px;
     }
@@ -190,7 +190,7 @@ button img{
         display: none;
     }
     p{
-        font-size:2em;
+        font-size: 1.5em;
         /* width: 90%; */
     }
     button{
@@ -208,7 +208,7 @@ button img{
         justify-content: center;
         gap: 10px;
         height: auto;
-        background-color: var(--purple);
+        background-color: #A97FA0;
         margin: 20px;
     }
     button img{
