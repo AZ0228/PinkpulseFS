@@ -110,7 +110,7 @@ body{
     width: 100%;
     height: 100%;
     gap: 30px;
-    max-width: 800px;
+    /* max-width: 800px; */
 }
 
 .container button{
@@ -124,7 +124,7 @@ body{
     font-size:var(--psmall);
     transition: all 0.5s;
     border: 5px solid var(--purple);
-    width:40%;
+    width: 100%;
     height:100%;
 }
 
@@ -464,6 +464,9 @@ body{
         width:100%;
         height: 50%;
     }
+    .container{
+        flex-direction: column;
+    }
     .statisticDisplay{
         flex-direction: column;
         align-items: center;
@@ -472,8 +475,8 @@ body{
     .main{
         height:95%;
         max-height: 1100px;
-        margin: 0 30px 30px 30px;
-        padding:10px;
+        /* margin: 0 30px 30px 30px; */
+        padding: 30px;
     }
     .mainSecond{
         padding:0;
