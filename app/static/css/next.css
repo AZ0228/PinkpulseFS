@@ -464,6 +464,9 @@ body{
         width:100%;
         height: 50%;
     }
+    .container{
+        flex-direction: column;
+    }
     .statisticDisplay{
         flex-direction: column;
         align-items: center;
@@ -472,8 +475,8 @@ body{
     .main{
         height:95%;
         max-height: 1100px;
-        margin: 0 30px 30px 30px;
-        padding:10px;
+        /* margin: 0 30px 30px 30px; */
+        padding: 30px;
     }
     .mainSecond{
         padding:0;
