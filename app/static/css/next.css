@@ -110,7 +110,7 @@ body{
     width: 100%;
     height: 100%;
     gap: 30px;
-    max-width: 800px;
+    /* max-width: 800px; */
 }
 
 .container button{
@@ -124,7 +124,7 @@ body{
     font-size:var(--psmall);
     transition: all 0.5s;
     border: 5px solid var(--purple);
-    width:40%;
+    width: 100%;
     height:100%;
 }
 
