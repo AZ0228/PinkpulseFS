@@ -463,9 +463,11 @@ body{
     .container button{
         width:100%;
         height: 50%;
+        border-radius: 30px;
     }
     .container{
         flex-direction: column;
+        gap: 15px;
     }
     .statisticDisplay{
         flex-direction: column;
@@ -476,7 +478,7 @@ body{
         height:95%;
         max-height: 1100px;
         /* margin: 0 30px 30px 30px; */
-        padding: 30px;
+        padding: 20px;
     }
     .mainSecond{
         padding:0;
