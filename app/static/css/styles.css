@@ -40,7 +40,7 @@ body{
     padding:0;
     height: 100vh;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: row;
     align-items: center;
 }   
@@ -54,7 +54,8 @@ body{
 }
 
 section{
-    position:absolute;
+    scale:0.8;
+    /* position:absolute; */
     width: 40%;
     top: 12%;
     left: 5%;
@@ -68,7 +69,7 @@ section{
 }
 
 h1{
-    font-size:4em;
+    font-size: 3.5em;
     margin:25px 0;
     color:var(--purple);
 }
@@ -147,7 +148,7 @@ button img{
         scale:0.8;
         min-width: 0;
         width:70%;
-        /* top:0; */
+        top:0;
         left:0;
     }
 }
@@ -157,17 +158,18 @@ button img{
         display:none;
     }
     section{
-        width:90%;
+        width: 100%;
         padding:50px;
-        position:relative;
+        /* position:relative; */
         top:auto;
         left:auto;
+        height: 100%;
     }
 }
 
 @media (max-width:700px){
     h1{
-        font-size:5em;
+        font-size: 3em;
     }
     p{
         font-size:3em;
@@ -175,14 +177,47 @@ button img{
 }
 
 @media (max-width:550px){
+    #logo{
+        /* max-width: 70vw; */
+        width: 100%;
+    }
     h1{
-        font-size:3em;
+        font-size: 2em;
+        width: 90%;
+        display: none;
     }
     p{
         font-size:2em;
+        /* width: 90%; */
     }
     button{
         width:100%;
-        padding:7px;
+        /* padding:7px; */
+        /* scale: 0.8; */
+        font-size: 1.5em;
+    }
+    section{
+        padding: 50px;
+        width: 100vw;
+        height:100%;
+        scale: 1;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+    }
+    button img{
+        height:30px;
+        width:30px;
+        transform:translateY(2px);
+    }
+    a{
+        width:100%;
+    }
+}
+
+
+@media(max-width:350px){
+    p{
+        font-size:1.5em
     }
 }
