@@ -531,7 +531,7 @@ body{
         --ptext:1.2em;
     }
     .container{
-        gap:10px;
+        /* gap:10px; */
     }
     .main{
         height:90%;
