@@ -262,7 +262,7 @@ body{
 }
 
 .statistics{
-    height:100vh;
+    /* height:100vh; */
     width:100vw;
     padding:30px;
     box-sizing: border-box;
@@ -410,6 +410,14 @@ body{
     width:30px;
 }
 
+.summary-legend .color{
+    border-radius: 50%;
+}
+
+.summary-legend{
+    scale:0.8;
+}
+
 .pieContainer{
     display:flex;
     align-items: center;
@@ -429,13 +437,16 @@ body{
 }
 
 .scatter-graph-container{
-    height:90%;
+    height: 90%;
     width:100%;
 }
 
 .relative{
     position: relative;
     z-index: 1;
+    display: flex;
+    gap: 20px;
+    align-items: center;
 }
 
 @media(max-width:850px){
