@@ -297,6 +297,8 @@ function renderSummary(name){
         },
     });
 
+    makeLegend([name],['#EDD6E0'],'.summary-legend');
+
 } //WORK IN PROGRESS
 
 
@@ -367,7 +369,7 @@ function toggleRuntime(runtime) {
 
 // -------------------DATA PROCESSING-------------------
 
-function makeLegend(values, color, legend) {
+function makeLegend(values, color, legend) { // takes list of labels, colors, and legend class
     let colors = color
     colors.slice(0, values.length);
     let legendElement = qs(legend);
@@ -426,8 +428,6 @@ function clearIncomeStats(){
         symbols[i].classList.remove('venusSelected');
     }
 }
-
-
 
 
 // -------------------AJAX---------------------
