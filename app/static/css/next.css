@@ -107,7 +107,8 @@ body{
 .container{
     display:flex;
     justify-content: space-between;
-    width: 80%;
+    width: 100%;
+    height: 100%;
     gap: 30px;
     max-width: 800px;
 }
@@ -122,7 +123,9 @@ body{
     border-radius: var(--bradius);
     font-size:var(--psmall);
     transition: all 0.5s;
-    border: 5px solid var(--purple)
+    border: 5px solid var(--purple);
+    width:40%;
+    height:100%;
 }
 
 .container button:hover{
