@@ -461,9 +461,8 @@ body{
         --psmall: 1.5em;
     }
     .container button{
-        border-radius:12.5px;
-        padding: 10px 20px;
-        /* font-size: 1em; */
+        width:100%;
+        height: 50%;
     }
     .statisticDisplay{
         flex-direction: column;
