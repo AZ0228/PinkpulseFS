@@ -180,6 +180,9 @@ button img{
     #logo{
         /* max-width: 70vw; */
         width: 100%;
+        background-color: var(--bg);
+        padding: 15px;
+        border-radius: 25px;
     }
     h1{
         font-size: 2em;
@@ -203,7 +206,10 @@ button img{
         scale: 1;
         align-items: center;
         justify-content: center;
-        gap: 20px;
+        gap: 10px;
+        height: auto;
+        background-color: var(--purple);
+        margin: 20px;
     }
     button img{
         height:30px;
