@@ -465,6 +465,11 @@ function getData() {
     
     Promise.all([backendData, general])
         .then(([generalData, backendData]) =>{
+            countyData = {
+                'County Average': backendData['amount_per_year'],
+                'State Average': generalData['State Average'],
+                'National Average': generalData['National Average'],
+            }
             scrollto(".statistics");
             toggleLoading();
             let endTime = performance.now();
@@ -479,7 +484,7 @@ function getData() {
 
             //=== charts ===
             setTimeout(() => {
-                renderTotalAmount(backendData['amount_per_year']);
+                renderTotalAmount(countyData);
                 renderIncomeDistribution(backendData['income_dist']);
                 renderRacialDistribution(backendData['racial_dist']);
                 makeLegend(backendData['racial_dist'][1], colors2, '.racial-legend');
