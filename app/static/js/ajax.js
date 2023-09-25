@@ -4,6 +4,12 @@ let totalAmountinArea;
 let incomeDist;
 let racialDist;
 let summary;
+let general =  fetch('/getgeneral')
+    .then(response => response.json())
+    .then(data => {
+        return data; 
+    });
+
 
 let scatterData;
 
@@ -442,7 +448,7 @@ function getData() {
     if (runtimeElement.classList.contains('active')) {
         toggleRuntime(0);
     }
-    fetch('/getdata', {
+    const backendData = fetch('/getdata', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -451,9 +457,19 @@ function getData() {
         body: JSON.stringify({
             input: userinput,
         })
-    })
+        })
         .then(response => response.json())
         .then(data => {
+            return data;
+        })
+    
+    Promise.all([backendData, general])
+        .then(([generalData, backendData]) =>{
+            countyData = {
+                'County Average': backendData['amount_per_year'],
+                'State Average': generalData['State Average'],
+                'National Average': generalData['National Average'],
+            }
             scrollto(".statistics");
             toggleLoading();
             let endTime = performance.now();
@@ -463,26 +479,26 @@ function getData() {
             console.log(data);
 
             //=== stats ===
-            incomeStats(data['income_dist']);
-            spendingStats(data['amount_per_year']);
+            incomeStats(backendData['income_dist']);
+            spendingStats(backendData['amount_per_year']);
 
             //=== charts ===
             setTimeout(() => {
-                renderTotalAmount(data['amount_per_year']);
-                renderIncomeDistribution(data['income_dist']);
-                renderRacialDistribution(data['racial_dist']);
-                makeLegend(data['racial_dist'][1], colors2, '.racial-legend');
+                renderTotalAmount(countyData);
+                renderIncomeDistribution(backendData['income_dist']);
+                renderRacialDistribution(backendData['racial_dist']);
+                makeLegend(backendData['racial_dist'][1], colors2, '.racial-legend');
                 makeLegend(['low income','mid/hi income'], ['#CD9BC2','#906E88'], '.income-legend');
 
             }, 200);
             setTimeout(() => {
                 toggleRuntime(duration);
             }, 500);
+
         })
 }
 
 function getSummary(){
-    const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
     let name = document.querySelector('select').value;
     if(name === 'test'){
         name = 'Los Angeles County, California'
@@ -498,6 +514,10 @@ function getSummary(){
                 renderSummary(name)
             }, 1000);
         })
+}
+
+function getGeneral(){
+
 }
 
 function qs(selector) {

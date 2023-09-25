@@ -530,9 +530,6 @@ body{
         --graph:200px;
         --ptext:1.2em;
     }
-    .container{
-        /* gap:10px; */
-    }
     .main{
         height:90%;
         margin-bottom:100px;

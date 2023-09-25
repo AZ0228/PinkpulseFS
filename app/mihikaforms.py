@@ -111,14 +111,14 @@ class County:
     racialStatisticsNational = {}
     nationalRacialProportion = None
     minorityNames = ["BLACK", "INDIGENOUS", "ASIAN", "HAWAIIAN", "OTHER", "HISPANIC"]
-    nationalDollarsSpent = (0.5 * (national_finder_acs1dp ("DP05_0003E")-national_finder_acs1dp ("DP05_0027E")) + 
-                            national_finder_acs1dp ("DP05_0027E") - national_finder_acs1dp ("DP05_0031E")) * 12 * 20
-    stateDollarsSpent = (0.5 * (state_finder_acs1dp("DP05_0003E")-state_finder_acs1dp("DP05_0027E")) + 
-                            state_finder_acs1dp("DP05_0027E") - state_finder_acs1dp("DP05_0031E")) * 12 * 20  
+    # nationalDollarsSpent = (0.5 * (national_finder_acs1dp ("DP05_0003E")-national_finder_acs1dp ("DP05_0027E")) + 
+    #                         national_finder_acs1dp ("DP05_0027E") - national_finder_acs1dp ("DP05_0031E")) * 12 * 20
+    # stateDollarsSpent = (0.5 * (state_finder_acs1dp("DP05_0003E")-state_finder_acs1dp("DP05_0027E")) + 
+    #                         state_finder_acs1dp("DP05_0027E") - state_finder_acs1dp("DP05_0031E")) * 12 * 20  
     
 
     def __init__ (self, name):
-        self.name = name #Name of form Alameda county
+        self.name = name #Name of form 
         self.code = county_fips [self.name]
         #county_codes #Keeps track of all county objects been created
         self.feature_dictionary = {}
@@ -155,7 +155,19 @@ class County:
     def return_dictionary (self):
         return self.feature_dictionary
     
-    
+    def amount_per_year_general(self):
+        nationalDollarsSpent = (0.5 * (national_finder_acs1dp ("DP05_0003E")-national_finder_acs1dp ("DP05_0027E")) + 
+                            national_finder_acs1dp ("DP05_0027E") - national_finder_acs1dp ("DP05_0031E")) * 12 * 20
+        stateDollarsSpent = (0.5 * (state_finder_acs1dp("DP05_0003E")-state_finder_acs1dp("DP05_0027E")) + 
+                            state_finder_acs1dp("DP05_0027E") - state_finder_acs1dp("DP05_0031E")) * 12 * 20  
+        table = {
+            "State Average": stateDollarsSpent,
+            "National Average": nationalDollarsSpent
+        }
+        return table
+
+
+
     def amount_per_year (self):
         if 'AMOUNT_PER_YEAR' in self.feature_dictionary.keys():
             amount_spent = self.feature_dictionary["AMOUNT_PER_YEAR"]
@@ -165,12 +177,7 @@ class County:
             total_women_in_area = menstruators_under_18 + menstruators_over_18
             amount_spent = total_women_in_area * 12 * 20
             self.feature_dictionary['AMOUNT_PER_YEAR'] = amount_spent 
-        table = {
-            "County Average": amount_spent,
-            "State Average": County.stateDollarsSpent,
-            "National Average": County.nationalDollarsSpent
-        }
-        return table
+        return amount_spent
     
     def income_distribution_women (self):
         low_income = self.find_statistic_acs1("B17001_017E")
