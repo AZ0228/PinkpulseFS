@@ -369,10 +369,10 @@ function toggleLoading() {
 }
 
 function toggleRuntime(runtime) {
-    let runtimeText = qs('.runtime-text');
-    let runtimeElement = qs('.runtime');
-    runtimeText.innerHTML = `API call took ${runtime.toFixed(2)} seconds.`;
-    runtimeElement.classList.toggle('active');
+    // let runtimeText = qs('.runtime-text');
+    // let runtimeElement = qs('.runtime');
+    // runtimeText.innerHTML = `API call took ${runtime.toFixed(2)} seconds.`;
+    // runtimeElement.classList.toggle('active');
 }
 
 // -------------------DATA PROCESSING-------------------
