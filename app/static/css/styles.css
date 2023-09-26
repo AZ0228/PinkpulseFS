@@ -210,6 +210,7 @@ button img{
         height: auto;
         background-color: #A97FA0;
         margin: 20px;
+        transform:translateY(-50px);
     }
     button img{
         height:30px;
