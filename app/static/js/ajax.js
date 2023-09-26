@@ -440,7 +440,14 @@ function clearIncomeStats(){
 
 function racialStats(data){
     const racialStats = qs('.racial-stats');
-    
+    let racialData = data[0];
+    let racialLabels = data[1];
+    let total = 100;
+    let index = racialLabels.indexOf('white');
+    if(index!=-1){
+        total -= racialData[index];
+    }
+    racialStats.textContent = total;
 }
 
 // -------------------AJAX---------------------
@@ -497,6 +504,7 @@ function getData() {
             //=== stats ===
             incomeStats(backendData['income_dist']);
             spendingStats(backendData['amount_per_year']);
+            racialStats(backendData['racial_dist']);
 
             //=== charts ===
             setTimeout(() => {
