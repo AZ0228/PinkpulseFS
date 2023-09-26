@@ -112,8 +112,32 @@ def getsummary():
             'namesList': namesList
         }
         return jsonify(ret)
+    
+    except Exception as e:
+        print(e)
+        # Handle any errors that might occur during processing
+        # Capture the traceback and format it
+        error_line = traceback.format_exc().splitlines()[-1]
+        error_traceback = traceback.format_exc()
 
-        return 1
+        # Prepare an error message with traceback details and the line number
+        error_details = {
+            'error': str(e),
+            'line_number': error_line,
+            'traceback': error_traceback
+        }
+
+        return jsonify(error_details), 500
+
+@app.route('/getgeneral',methods=['GET'])
+def getgeneral():
+    print('Getting general ...')
+    try:
+        county = County('Alameda County, California')
+        amount_per_year = county.amount_per_year_general()
+        amount_per_year = formatamount(amount_per_year)
+
+        return jsonify(amount_per_year)
     except Exception as e:
         print(e)
         # Handle any errors that might occur during processing
@@ -143,7 +167,7 @@ def getdata():
         else: 
             county = County(county_name)
         amount_per_year = county.amount_per_year()
-        amount_per_year = formatamount(amount_per_year) #8 seconds
+        amount_per_year /= 1000000 #8 seconds
         income_dist = county.income_distribution_women() # 5 seconds -> 0 seconds
         income_dist = formatincome(income_dist)
         racial_dist = county.racial_statistics_women_county() #8-10 seconds

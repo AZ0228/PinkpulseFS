@@ -405,6 +405,7 @@ function makeLegend(values, color, legend) { // takes list of labels, colors, an
 }
 
 function incomeStats(data) {
+    console.log(data);
     clearIncomeStats();
     let incomeStats = data[0];
     incomeStats /= 10;
@@ -448,7 +449,7 @@ function getData() {
     if (runtimeElement.classList.contains('active')) {
         toggleRuntime(0);
     }
-    const backendData = fetch('/getdata', {
+    let backendData = fetch('/getdata', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -460,11 +461,13 @@ function getData() {
         })
         .then(response => response.json())
         .then(data => {
+            console.log(data);
             return data;
         })
     
     Promise.all([backendData, general])
-        .then(([generalData, backendData]) =>{
+        .then(([backendData, generalData]) =>{
+            console.log(backendData);
             countyData = {
                 'County Average': backendData['amount_per_year'],
                 'State Average': generalData['State Average'],
@@ -476,7 +479,6 @@ function getData() {
             let duration = endTime - startTime;
             duration = duration / 1000;
             console.log(`API call took ${duration.toFixed(2)} seconds.`);
-            console.log(data);
 
             //=== stats ===
             incomeStats(backendData['income_dist']);
@@ -496,6 +498,9 @@ function getData() {
             }, 500);
 
         })
+        .catch(error => {
+            console.error('Error in Promise.all:', error);
+        });
 }
 
 function getSummary(){
