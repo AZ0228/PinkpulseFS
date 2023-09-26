@@ -11,6 +11,7 @@ let general =  fetch('/getgeneral')
         return data; 
     });
 
+let counties = {};
 
 let scatterData;
 
@@ -437,7 +438,6 @@ function clearIncomeStats(){
     }
 }
 
-
 // -------------------AJAX---------------------
 
 function getData() {
@@ -450,21 +450,29 @@ function getData() {
     if (runtimeElement.classList.contains('active')) {
         toggleRuntime(0);
     }
-    let backendData = fetch('/getdata', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRFToken': csrfToken
-        },
-        body: JSON.stringify({
-            input: userinput,
-        })
-        })
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-            return data;
-        })
+    let backendData;
+    if(userinput in counties){
+        backendData = counties[userinput];
+    } else {
+        backendData = fetch('/getdata', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': csrfToken
+            },
+            body: JSON.stringify({
+                input: userinput,
+            })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                counties[userinput] = data;
+                console.log(counties);
+                return data;
+            })
+    }
+
     
     Promise.all([backendData, general])
         .then(([backendData, generalData]) =>{
