@@ -55,8 +55,11 @@ def formatracial(racialDistribution):
     sorted_combined = dict(sorted(combined.items(),reverse=True))
     racialdist = list(sorted_combined.keys())
     racialoptions = list(sorted_combined.values())
-    racialdist.append(round(100*(white/total)))
-    racialoptions.append('white')
+    if white == 0:
+        pass
+    else:
+        racialdist.append(round(100*(white/total)))
+        racialoptions.append('white')
     return racialdist, racialoptions
 
 

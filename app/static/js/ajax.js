@@ -438,6 +438,11 @@ function clearIncomeStats(){
     }
 }
 
+function racialStats(data){
+    const racialStats = qs('.racial-stats');
+    
+}
+
 // -------------------AJAX---------------------
 
 function getData() {
