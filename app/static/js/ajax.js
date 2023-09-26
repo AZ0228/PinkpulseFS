@@ -7,6 +7,7 @@ let summary;
 let general =  fetch('/getgeneral')
     .then(response => response.json())
     .then(data => {
+        console.log(data);
         return data; 
     });
 
@@ -419,7 +420,7 @@ function incomeStats(data) {
 }
 
 function spendingStats(data) {
-    let spendingStats = data['County Average'];
+    let spendingStats = data;
     spendingStats *= 1000000;
     spendingStats = Math.round(spendingStats);
     let formattedNumber = '$';
