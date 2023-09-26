@@ -529,9 +529,6 @@ function getSummary(){
     let name = document.querySelector('select').value;
     if(name === 'test'){
         name = 'Los Angeles County, California'
-    } else if (name === ''){
-        console.log('empty :((');
-        return;
     }
     fetch('/getsummary')
         .then(response => response.json())
