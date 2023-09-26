@@ -71,7 +71,7 @@ def index():
 @app.route('/second')
 def second():
     choices = getchoices()
-    choices.insert(0,'test')
+    # choices.insert(0,'test')
     statistic = StatisticFinder()
     statistic.county.choices=choices
     return render_template('statistic.html', statisticfinder = statistic)
@@ -80,7 +80,7 @@ def second():
 def statisticfinder():
     print('stats')
     choices = getchoices()
-    choices.insert(0,'test')
+    # choices.insert(0,'test')
     statistic = StatisticFinder() # form
     statistic.county.choices=choices
     # task = update_api.apply_async()
