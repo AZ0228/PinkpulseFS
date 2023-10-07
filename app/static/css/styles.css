@@ -85,6 +85,29 @@ a{
     text-decoration: none;
 }
 
+#index-git{
+    position:absolute;
+    bottom: 35px;
+    right: 35px;
+    height:40px;
+    width:40px;
+}
+
+#index-git img{
+    height:100%;
+    width:100%;
+}
+
+#index-git:hover{
+    cursor:pointer;
+    scale:1.05
+}
+
+.mobileLogo{
+    display:none;
+}
+
+
 button{
     outline:none;
     display:flex;
@@ -184,6 +207,12 @@ button img{
         padding: 15px;
         border-radius: 25px;
     }
+    .mobileLogo{
+        display:block;
+    }
+    .desktopLogo{
+        display:none;
+    }
     h1{
         font-size: 2em;
         width: 90%;
@@ -208,7 +237,7 @@ button img{
         justify-content: center;
         gap: 10px;
         height: auto;
-        background-color: #A97FA0;
+        background-color: var(--purple);
         margin: 20px;
         transform:translateY(-50px);
     }
@@ -219,6 +248,9 @@ button img{
     }
     a{
         width:100%;
+    }
+    #index-git{
+        right: calc(50% - 20px);
     }
 }
 

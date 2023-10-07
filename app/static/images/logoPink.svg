@@ -1,0 +1,17 @@
+<svg width="686" height="156" viewBox="0 0 686 156" fill="none" xmlns="http://www.w3.org/2000/svg">
+<text fill="#CD9BC2" xml:space="preserve" style="white-space: pre" font-family="Pally" font-size="125" font-weight="bold" letter-spacing="-0.02em"><tspan x="0" y="89.5">pink&#10;</tspan></text>
+<text fill="#A780A0" xml:space="preserve" style="white-space: pre" font-family="Pally" font-size="128" font-weight="bold" letter-spacing="-0.02em"><tspan x="397" y="116.3">pulse</tspan></text>
+<mask id="mask0_84_18" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="204" y="18" width="221" height="131">
+<path d="M414 55.5H365.834C364.136 55.5 362.623 56.5718 362.06 58.1735L334 138V138C333.398 138 332.86 137.627 332.649 137.064L292.781 30.7497C292.144 29.0502 289.754 29.0101 289.06 30.6873L267.511 82.7647C267.202 83.5124 266.472 84 265.663 84H215" stroke="#7B5573" stroke-width="21" stroke-linecap="round"/>
+</mask>
+<g mask="url(#mask0_84_18)">
+<path d="M431 5H198V158H431V5Z" fill="url(#paint0_linear_84_18)"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_84_18" x1="213.5" y1="93" x2="412" y2="95" gradientUnits="userSpaceOnUse">
+<stop stop-color="#CD9BC2"/>
+<stop offset="0.5" stop-color="#CD9BC2"/>
+<stop offset="1" stop-color="#A6839E"/>
+</linearGradient>
+</defs>
+</svg>
