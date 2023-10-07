@@ -470,6 +470,25 @@ body{
     border: 5px solid #A77E9E;
 }
 
+#index-git{
+    position:absolute;
+    bottom: 35px;
+    right: calc(50% - 20px);
+    height:40px;
+    width:40px;
+}
+
+#index-git img{
+    height:100%;
+    width:100%;
+}
+
+#index-git:hover{
+    cursor:pointer;
+    scale:1.05
+}
+
+
 @media(max-width:850px){
     :root{
         --h1:4em;
