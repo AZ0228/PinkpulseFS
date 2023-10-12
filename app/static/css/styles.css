@@ -250,8 +250,9 @@ button img{
         width:100%;
     }
     #index-git{
-        right: calc(50% - 20px);
+        display:none;
     }
+    
 }
 
 
