@@ -606,9 +606,7 @@ body{
         display:flex;
         gap:20px;
     }
-    #index-git{
-        display:none;
-    }
+
 }
 
 @media (max-width:350px){
