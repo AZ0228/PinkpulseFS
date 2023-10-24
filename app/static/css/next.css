@@ -41,6 +41,7 @@
 h1{
     font-size:var(--h1);
     margin-bottom: 20px;
+    margin-top: 40px;
 }
 
 h2{
@@ -257,6 +258,7 @@ body{
     padding: 10px 5px;
     color: var(--pink);
     border: 5px solid var(--purple);
+    background-color: var(--purple);
     margin-top: 15px;
     transition: all 0.5s;
     width: 50%;
@@ -277,7 +279,7 @@ body{
 }
 
 .submit:hover{
-    background-color: var(--pink) !important;
+    background-color: var(--pink);
     color: var(--purple);
 }
 
