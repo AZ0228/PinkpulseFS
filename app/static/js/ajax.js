@@ -355,11 +355,13 @@ function toggleLoading() {
         loading = false;
         qs('.loader').classList.remove('active');
         qs('.choose').classList.remove('blur');
+        id('index-git').classList.remove('blur');
         enableScroll();
     } else {
         loading = true;
         qs('.loader').classList.add('active');
         qs('.choose').classList.add('blur');
+        id('index-git').classList.add('blur');
         scrollToTop();
         window.addEventListener("scroll", handleScroll);
         setTimeout(() => {
