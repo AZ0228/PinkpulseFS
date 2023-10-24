@@ -2,6 +2,7 @@
     --bg:#F8F6EA;
     --pink:#CD9BC2;
     --purple: #7B5573;
+    --inactive: #A77E9E;
     --h1: 5em;
     --h2: 3em;
     --h3: 2em;
@@ -256,7 +257,6 @@ body{
     font-family: 'Satoshi';
     border-radius: 15px;
     padding: 10px 5px;
-    background-color: var(--purple);
     color: var(--pink);
     border: 5px solid var(--purple);
     margin-top: 15px;
@@ -266,6 +266,12 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
+
+    /* ---inactive, validation--- */
+    background-color: var(--inactive);
+    pointer-events: none;
+    /* -------------------------- */
+    
 }
 
 .submit:hover{
@@ -489,6 +495,7 @@ body{
 }
 
 
+
 @media(max-width:850px){
     :root{
         --h1:4em;
@@ -606,6 +613,7 @@ body{
         display:flex;
         gap:20px;
     }
+
 }
 
 @media (max-width:350px){

@@ -6,61 +6,26 @@
 
 using namespace std;
 
-//prototypes given already
-void getShapeInfo(string &shape, double &parameter1, double &parameter2, double &parameter3);
+int main()
+{
+    char choice = 'y'; //creating a char for the y character
+    int asciiCode; // the integer of the ascii code
 
-double calculateRectanglePerimeter(double width, double height);
-double calculateRectangleArea(double width, double height);
+    cout << "This program will output the ASCII character" << endl;
+    do{
+        cout << "Enter a number between 32 and 126:";
+        cin >> asciiCode; // taking in user's integer
 
-double calculateCirclePerimeter(double radius);
-double calculateCircleArea(double radius);
-
-double calculateTrianglePerimeter(double side1, double side2, double side3);
-double calculateTriangleArea(double side1, double side2, double side3);
-
-void displayResult(string shape, double perimeter, double area);
-
-
-// This line is used by the autograder.  Please do not remove.
-#ifndef CATCH_CONFIG_MAIN
-int main() {
-    cout << "This program will give you the perimeter and area of a shape." << endl;
-
-    string goAgain = "Y";
-
-    do {
-        string shape;
-        double parameter1, parameter2, parameter3;
-        getShapeInfo(shape, parameter1, parameter2, parameter3);
-
-        double perimeter, area;
-
-        if (shape == "S"){
-            calculateRectanglePerimeter(parameter1, parameter2);
-            calculateRectangleArea(parameter1, parameter2);
+        if (asciiCode <= 32 || asciiCode >= 126) { // integer must be between 32 and 126
+            cout << "That number is out of range." << endl;
+            continue; // skip the rest of the loop and start from the beginning
         }
-        else if (shape == "R"){
-            calculateRectanglePerimeter(parameter1, parameter2);
-            calculateRectangleArea(parameter1, parameter2);
-        }
-        else if (shape == "C"){
-            calculateCirclePerimeter(parameter1);
-            calculateCircleArea( parameter1);
-        }
-        else if (shape == "T"){
-            calculateTrianglePerimeter(parameter1, parameter2, parameter3);
-            calculateTriangleArea(parameter1, parameter2, parameter3);
-        }
+        cout << "The ASCII character for " << asciiCode << " is '" << static_cast<char>(asciiCode) << "'." << endl;
 
-        displayResult(shape, perimeter, area);
-
-
-
-        cout << "Would you like to enter another Shape? (Y/y for yes): ";
-        cin >> goAgain;
+        cout << "Would you like to enter another ASCII code? (Enter Y for Yes):"; // asking for decision
+        cin >> choice; // taking in decision
 
     } while (goAgain == "Y" || goAgain == "y");
-
 
     return 0;
 }

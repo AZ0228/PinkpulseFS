@@ -23,3 +23,21 @@ function statistic(){
         }, 700);
     }, 300);
 }
+
+function validation(){
+    let dropdown = document.querySelector('.dropdown');
+    if(dropdown.value!=''){
+        let btn = document.querySelector('.submit');
+        btn.style.pointerEvents = 'all';
+        btn.style.backgroundColor = "var(--purple)";
+    } else {
+        let btn = document.querySelector('.submit');
+        btn.style.pointerEvents = 'none';
+        btn.style.backgroundColor = "var(--inactive)";
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    let dropdown = document.querySelector('.dropdown');
+    dropdown.addEventListener('change', validation);
+});
