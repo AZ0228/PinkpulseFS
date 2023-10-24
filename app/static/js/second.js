@@ -28,12 +28,10 @@ function validation(){
     let dropdown = document.querySelector('.dropdown');
     if(dropdown.value!=''){
         let btn = document.querySelector('.submit');
-        btn.style.pointerEvents = 'all';
-        btn.style.backgroundColor = "var(--purple)";
+        btn.classList.remove('disabled');
     } else {
         let btn = document.querySelector('.submit');
-        btn.style.pointerEvents = 'none';
-        btn.style.backgroundColor = "var(--inactive)";
+        btn.classList.add('disabled');
     }
 }
 
