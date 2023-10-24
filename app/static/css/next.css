@@ -41,7 +41,7 @@
 h1{
     font-size:var(--h1);
     margin-bottom: 20px;
-    margin-top: 40px;
+    /* margin-top: 40px; */
 }
 
 h2{
@@ -482,10 +482,10 @@ body{
 
 #index-git{
     position:absolute;
-    bottom: 35px;
-    right: calc(50% - 20px);
-    height:40px;
-    width:40px;
+    bottom: 25px;
+    right: calc(50% - 18px);
+    height: 36px;
+    width: 36px;
 }
 
 #index-git img{
