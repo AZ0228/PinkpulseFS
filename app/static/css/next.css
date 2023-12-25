@@ -651,3 +651,9 @@ body{
     }
 
 }
+
+@media (max-height: 570px){
+    #index-git{
+        display:none;
+    }
+}
