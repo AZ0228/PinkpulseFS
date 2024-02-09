@@ -20,11 +20,11 @@
         <button onclick="toggleRuntime(0)"><p>x</p></button>
     </div>
     <div class="loader">
-        <div class="three-body">
-            <div class="three-body__dot"></div>
-            <div class="three-body__dot"></div>
-            <div class="three-body__dot"></div>
-        </div>    
+        <div class="loading">
+            <svg width="64px" height="48px">
+              <polyline points="0.157 23.954, 14 23.954, 25.843 1, 43 48, 50 24, 64 24"  id="front"></polyline>
+            </svg>
+          </div>
     </div>
     {% include 'choose.html' %}
     <section class="statistics">
@@ -76,7 +76,7 @@
   
         
     </section>
-    <a id="index-git" class="choose" href="https://github.com/AZ0228/PinkpulseFS.git"><img src="{{ url_for('static',filename='images/github.svg') }}" alt="" ></a>
+    <a id="index-git" title="github" class="choose" href="https://github.com/AZ0228/PinkpulseFS.git"><img src="{{ url_for('static',filename='images/github.svg') }}" alt="" ></a>
 
     <script src="{{ url_for('static',filename='js/ajax.js') }}"></script>
     <script>
